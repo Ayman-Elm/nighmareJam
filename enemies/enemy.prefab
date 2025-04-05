@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 953567633077170734}
   - component: {fileID: 3029468384381109640}
+  - component: {fileID: 4583009986727006585}
+  - component: {fileID: -3320615045466972021}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -87,3 +89,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4583009986727006585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327943098362198208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5cf62e5eb702e4d8af8bd3c7d2455c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatlth: 100
+  damage: 1
+  speed: 100
+  spawnPropability: 100
+--- !u!114 &-3320615045466972021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327943098362198208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba29e2ea4570504db7f85fc9a932336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  chaseSpeed: 3
+  circleSpeed: 2
+  dashSpeed: 8
+  chaseDistance: 10
+  orbitDistance: 2.5
+  orbitExitBuffer: 1.2
+  attackInterval: 2
+  dashDuration: 0.2
+  returnSpeed: 6
+  separationRadius: 1.5
+  separationForce: 1
+  separationWeight: 1
+  repelFromPlayer: 0
+  playerRepelDistance: 1
+  playerRepelForce: 2
+  stuckThreshold: 0.1
+  stuckTimeLimit: 2
+  unstickForce: 5
+  maxSpeed: 10
