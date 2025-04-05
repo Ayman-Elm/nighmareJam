@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794568663455393
+  lastModified: 638794618753534632
   FileSizes:
   - Name: Desktop
-    Value: 724
+    Value: 866
   Exists: 1
 --- !u!114 &-6663249805098545835
 MonoBehaviour:
@@ -35,11 +35,38 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794568663430309
+  lastModified: 638794618753521454
   FileSizes:
   - Name: Desktop
-    Value: 1074
+    Value: 545024
   Exists: 1
+--- !u!114 &-4768006668500518344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FlashLightOff
+  m_EditorClassIdentifier: 
+  Path: event:/FlashLightOff
+  Guid:
+    Data1: 673511276
+    Data2: 1255494075
+    Data3: 258316222
+    Data4: -187630411
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1850
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,12 +82,75 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: -8262154983233447341}
   - {fileID: -6663249805098545835}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: 910739700401342630}
+  - {fileID: -4768006668500518344}
+  - {fileID: 271212029490552908}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6663249805098545835}
   StringsBanks:
   - {fileID: -8262154983233447341}
   cacheVersion: 131847
-  cacheTime: 638794568663455393
-  SerializableEventsDict: []
+  cacheTime: 638794618753534632
+  SerializableEventsDict:
+  - key: event:/Music
+    index: 0
+  - key: event:/FlashLightOff
+    index: 1
+  - key: event:/FlashLightOn
+    index: 2
+--- !u!114 &271212029490552908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FlashLightOn
+  m_EditorClassIdentifier: 
+  Path: event:/FlashLightOn
+  Guid:
+    Data1: -1381526365
+    Data2: 1286814355
+    Data3: 1582730368
+    Data4: 1482601976
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 15000
+--- !u!114 &910739700401342630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music
+  Guid:
+    Data1: -420260514
+    Data2: 1160686298
+    Data3: -295302723
+    Data4: 1679252418
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 40071

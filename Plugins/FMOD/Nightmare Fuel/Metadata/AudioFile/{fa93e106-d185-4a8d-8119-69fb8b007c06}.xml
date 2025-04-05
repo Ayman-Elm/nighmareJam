@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{fa93e106-d185-4a8d-8119-69fb8b007c06}">
+		<property name="assetPath">
+			<value>ngj lullaby draft 1.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>40.071836734693875</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b27de4f4-af12-4d90-a610-83e0dea65183}</destination>
+		</relationship>
+	</object>
+</objects>
