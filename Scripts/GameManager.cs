@@ -2,23 +2,38 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float speedAmplifier = 1.0f; // Speed multiplier for the player
-    public float healthAmplifier = 1.0f; // Health multiplier for the player
-    public float energyAmplifier = 1.0f; // Energy multiplier for the player
-    public float attackSpeedAmplifier = 1.0f; // Attack speed multiplier for the player
-    public float damageAmplifier = 1.0f; // Damage multiplier for the player
-    public int level = 1; // map level
-    public int courency = 0; // currency for the player
-    public bool isNightmare = false; // is the player in nightmare mode
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static GameManager Instance { get; private set; }
+
+    public float speedAmplifier = 1.0f;
+    public float healthAmplifier = 1.0f;
+    public float energyAmplifier = 1.0f;
+    public float attackSpeedAmplifier = 1.0f;
+    public float damageAmplifier = 1.0f;
+    public int level = 1;
+    public int courency = 0;
+    public bool isNightmare = false;
+
+    private void Awake()
     {
-        
+        // Singleton pattern
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // Kill duplicates
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // Persist through scenes
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        // Placeholder: Setup code for initial game state if needed
+        Debug.Log("GameManager started. Nightmare mode: " + isNightmare);
+    }
+
     void Update()
     {
-        
+        // Optional: Add ticking logic later
     }
 }
