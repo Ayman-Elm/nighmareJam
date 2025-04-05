@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using FMODUnity;
+using FMOD.Studio;
 
 public class Player : MonoBehaviour
 {
@@ -13,38 +15,60 @@ public class Player : MonoBehaviour
 
     private float lastFlashlightUseTime;
     private LightMod flashlight;
+    public EventInstance batteryLifeInstance;
 
     public float invincibilityDuration = 0.5f;
     private bool isInvincible = false;
 
-void Start()
-{
-    flashlight = GetComponentInChildren<LightMod>();
-    lastFlashlightUseTime = Time.time;
+    void Start()
+    {
+        flashlight = GetComponentInChildren<LightMod>();
+        lastFlashlightUseTime = Time.time;
 
-    ApplyAmplifiers(); // ✅ This replaces the original amplifier code
-}
+        // Create the battery life event instance but don't start it
+        batteryLifeInstance = RuntimeManager.CreateInstance("event:/FlashLightOn");
+
+        ApplyAmplifiers();
+    }
+
+    void OnDestroy()
+    {
+        if (batteryLifeInstance.isValid())
+        {
+            batteryLifeInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            batteryLifeInstance.release();
+        }
+    }
 
     void Update()
     {
         HandleFlashlightEnergy();
-       // Debug.Log("Energy: " + energy.ToString("F1"));
+        UpdateBatteryLifeParameter();
     }
+
+    void UpdateBatteryLifeParameter()
+    {
+        if (batteryLifeInstance.isValid() && flashlight.GetIsFlashlightOn())
+        {
+            // Set the Battery Life parameter based on current energy (1-100)
+            batteryLifeInstance.setParameterByName("Battery Life", energy);
+        }
+    }
+
     public void ApplyAmplifiers()
-{
-    if (GameManager.Instance != null)
     {
-        speed = 5.0f * GameManager.Instance.speedAmplifier;
-        health = 5.0f * GameManager.Instance.healthAmplifier;
-        energy = 100f * GameManager.Instance.energyAmplifier;
-    }
+        if (GameManager.Instance != null)
+        {
+            speed = 5.0f * GameManager.Instance.speedAmplifier;
+            health = 5.0f * GameManager.Instance.healthAmplifier;
+            energy = 100f * GameManager.Instance.energyAmplifier;
+        }
 
-    if (flashlight != null)
-    {
-        flashlight.ApplyAmplifiersFromGameManager();
+        if (flashlight != null)
+        {
+            flashlight.ApplyAmplifiersFromGameManager();
+        }
     }
-}
-
 
     void HandleFlashlightEnergy()
     {
@@ -101,5 +125,4 @@ void Start()
         yield return new WaitForSeconds(invincibilityDuration);
         isInvincible = false;
     }
-    
 }

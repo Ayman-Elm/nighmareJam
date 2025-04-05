@@ -66,7 +66,7 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794821270511037
+  lastModified: 638794814705772511
   FileSizes:
   - Name: Desktop
     Value: 1102
@@ -86,10 +86,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794821270494058
+  lastModified: 638794814705757428
   FileSizes:
   - Name: Desktop
-    Value: 1228128
+    Value: 1258368
   Exists: 1
 --- !u!114 &-4768006668500518344
 MonoBehaviour:
@@ -144,7 +144,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1489
+  Length: 593
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -8262154983233447341}
   cacheVersion: 131847
-  cacheTime: 638794821270511037
+  cacheTime: 638794814705772511
   SerializableEventsDict:
   - key: event:/FlashLightOff
     index: 0

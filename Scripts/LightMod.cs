@@ -10,6 +10,7 @@ public class LightMod : MonoBehaviour
 {
     [SerializeField] public EventReference flashlightOnSound;
     [SerializeField] public EventReference flashlightOffSound;
+    [SerializeField] public EventReference enemyDeathSound;
 
     [Header("Light Settings")]
     public Color lightColor = Color.white;
@@ -90,35 +91,47 @@ public class LightMod : MonoBehaviour
         if (player.energy <= 0f)
         {
             _light2D.enabled = false;
-            return;
+        }
+        else
+        {
+            // Light control: hold-to-use logic
+            if (onlyOnLeftMouse)
+            {
+                _light2D.enabled = Input.GetMouseButton(0);
+            }
+            else
+            {
+                _light2D.enabled = true;
+            }
         }
 
-        // Light control: hold-to-use logic
-        if (onlyOnLeftMouse)
+        // Sound control based purely on Light2D state
+        if (_light2D.enabled != _wasLightEnabled)
         {
-            bool shouldBeEnabled = Input.GetMouseButton(0);
-
-            if (shouldBeEnabled && !_wasLightEnabled)
+            if (_light2D.enabled)
             {
                 _flashlightSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
                 _flashlightSound.start();
+                // Start the battery life event
+                if (player.batteryLifeInstance.isValid())
+                {
+                    player.batteryLifeInstance.start();
+                }
             }
-            else if (!shouldBeEnabled && _wasLightEnabled)
+            else
             {
                 _flashlightSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 if (!flashlightOffSound.IsNull)
                 {
                     AudioManager.Instance.PlayOneShot(flashlightOffSound, this.transform.position);
                 }
+                // Stop the battery life event
+                if (player.batteryLifeInstance.isValid())
+                {
+                    player.batteryLifeInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                }
             }
-
-            _light2D.enabled = shouldBeEnabled;
-            _wasLightEnabled = shouldBeEnabled;
-        }
-        else
-        {
-            _light2D.enabled = true;
-            _wasLightEnabled = true;
+            _wasLightEnabled = _light2D.enabled;
         }
     }
 
@@ -131,17 +144,14 @@ public class LightMod : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other)
-{
-    if (!_light2D.enabled || player.energy <= 0f) return;
-
-    if (other.CompareTag("Enemy"))
     {
-        Enemy enemy = other.GetComponent<Enemy>();
-        if (enemy != null)
+        if (!_light2D.enabled || player.energy <= 0f) return;
+
+        if (other.CompareTag("Enemy"))
         {
-            if (!_nextAttackTime.ContainsKey(other))
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                _nextAttackTime[other] = 0f;
                 if (!_nextAttackTime.ContainsKey(other))
                 {
                     _nextAttackTime[other] = 0f;
@@ -149,61 +159,55 @@ public class LightMod : MonoBehaviour
 
                 if (Time.time >= _nextAttackTime[other])
                 {
+                    // Apply damage
                     enemy.heatlth -= damage;
 
+                    // Slow the enemy for 2 seconds at half speed
+                    EnemyAI enemyAI = other.GetComponent<EnemyAI>();
+                    if (enemyAI != null)
+                    {
+                        enemyAI.ApplySlow();
+                    } 
+
+                    // If the enemy dies...
                     if (enemy.heatlth <= 0)
                     {
-                        Destroy(enemy.gameObject); // Use Die method to reward currency
+                        if (GameManager.Instance != null)
+                        {
+                            GameManager.Instance.courency += enemy.CoinDrop;
+                        }
+                        if (!enemyDeathSound.IsNull)
+                        {
+                            AudioManager.Instance.PlayOneShot(enemyDeathSound, enemy.transform.position);
+                        }
+                        Destroy(enemy.gameObject);
                     }
 
                     _nextAttackTime[other] = Time.time + (1f / attackSpeed);
                 }
             }
-
-            if (Time.time >= _nextAttackTime[other])
-            {
-                // Apply damage
-                enemy.heatlth -= damage;
-
-                // Slow the enemy for 2 seconds at half speed
-                EnemyAI enemyAI = other.GetComponent<EnemyAI>();
-                if (enemyAI != null)
-                {
-                    enemyAI.ApplySlow();
-                } 
-
-                // If the enemy dies...
-                if (enemy.heatlth <= 0)
-                {
-                    Destroy(enemy.gameObject);
-                    GameManager.Instance.courency += enemy.CoinDrop;
-                }
-
-                _nextAttackTime[other] = Time.time + (1f / attackSpeed);
-            }
-        } 
-    
+        }
     }
-}
 
     private void OnTriggerExit2D(Collider2D other)
-{
-    if (other.CompareTag("Enemy"))
     {
-        // Remove timing entry if you like
-        if (_nextAttackTime.ContainsKey(other))
+        if (other.CompareTag("Enemy"))
         {
-            _nextAttackTime.Remove(other);
-        }
+            // Remove timing entry if you like
+            if (_nextAttackTime.ContainsKey(other))
+            {
+                _nextAttackTime.Remove(other);
+            }
 
-        // Reset speed stats
-        EnemyAI enemyAI = other.GetComponent<EnemyAI>();
-        if (enemyAI != null)
-        {
-            enemyAI.resetStats();
+            // Reset speed stats
+            EnemyAI enemyAI = other.GetComponent<EnemyAI>();
+            if (enemyAI != null)
+            {
+                enemyAI.resetStats();
+            }
         }
     }
-}
+
     public bool GetIsFlashlightOn()
     {
         return _light2D.enabled && (!onlyOnLeftMouse || Input.GetMouseButton(0));
