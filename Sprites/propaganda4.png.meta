@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      propaganda4_0: -8621187118820640660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
