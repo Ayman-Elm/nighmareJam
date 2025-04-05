@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int CoinDrop = 0;
     public float heatlth = 0f; // Health of the enemy
     public float damage = 0f; // Damage of the enemy
     public float speed = 0f; // Speed of the enemy;

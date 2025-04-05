@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleFlashlightEnergy();
-        Debug.Log("Energy: " + energy.ToString("F1"));
+       // Debug.Log("Energy: " + energy.ToString("F1"));
     }
     void HandleFlashlightEnergy()
     {

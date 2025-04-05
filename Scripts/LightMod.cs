@@ -106,42 +106,63 @@ public class LightMod : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other)
+{
+    if (!_light2D.enabled || player.energy <= 0f) return;
+
+    if (other.CompareTag("Enemy"))
     {
-        if (!_light2D.enabled || player.energy <= 0f) return;
-
-        if (other.CompareTag("Enemy"))
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
+            if (!_nextAttackTime.ContainsKey(other))
             {
-                if (!_nextAttackTime.ContainsKey(other))
-                {
-                    _nextAttackTime[other] = 0f;
-                }
-
-                if (Time.time >= _nextAttackTime[other])
-                {
-                    enemy.heatlth -= damage;
-
-                    if (enemy.heatlth <= 0)
-                    {
-                        Destroy(enemy.gameObject);
-                    }
-
-                    _nextAttackTime[other] = Time.time + (1f / attackSpeed);
-                }
+                _nextAttackTime[other] = 0f;
             }
-        }
+
+            if (Time.time >= _nextAttackTime[other])
+            {
+                // Apply damage
+                enemy.heatlth -= damage;
+
+                // Slow the enemy for 2 seconds at half speed
+                EnemyAI enemyAI = other.GetComponent<EnemyAI>();
+                if (enemyAI != null)
+                {
+                    enemyAI.ApplySlow();
+                } 
+
+                // If the enemy dies...
+                if (enemy.heatlth <= 0)
+                {
+                    Destroy(enemy.gameObject);
+                    GameManager.Instance.courency += enemy.CoinDrop;
+                }
+
+                _nextAttackTime[other] = Time.time + (1f / attackSpeed);
+            }
+        } 
+    
     }
+}
 
     private void OnTriggerExit2D(Collider2D other)
+{
+    if (other.CompareTag("Enemy"))
     {
+        // Remove timing entry if you like
         if (_nextAttackTime.ContainsKey(other))
         {
             _nextAttackTime.Remove(other);
         }
-    }
 
+        // Reset speed stats
+        EnemyAI enemyAI = other.GetComponent<EnemyAI>();
+        if (enemyAI != null)
+        {
+            enemyAI.resetStats();
+        }
+    }
+}
     public bool GetIsFlashlightOn()
     {
         return _light2D.enabled && (!onlyOnLeftMouse || Input.GetMouseButton(0));
