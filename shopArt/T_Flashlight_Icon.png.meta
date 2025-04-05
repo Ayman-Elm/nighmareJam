@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      T_Flashlight_Icon_0: 2268899184249228812
+      T_Flashlight_Icon_1: 3729197449817249314
+      T_Flashlight_Icon_2: -681416996445569342
+      T_Flashlight_Icon_3: 8414805636765660380
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
