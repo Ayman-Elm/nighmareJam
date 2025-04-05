@@ -11,14 +11,14 @@ public class LightMod : MonoBehaviour
     [Header("Spot Settings (for 2D Spot Light)")]
     [Range(0, 360)] public float innerAngle = 70.588f;
     [Range(0, 360)] public float outerAngle = 70.588f;
-    [Range(0, 10)]  public float innerRadius = 1f;
-    [Range(0, 10)]  public float outerRadius = 5.59f;
-    [Range(0, 1)]   public float falloffStrength = 0.109f;
+    [Range(0, 10)] public float innerRadius = 1f;
+    [Range(0, 10)] public float outerRadius = 5.59f;
+    [Range(0, 1)] public float falloffStrength = 0.109f;
 
     [Header("Light Toggle")]
     // When true, the light is only enabled while the left mouse button is held down.
     public bool onlyOnLeftMouse = false;
-    
+
     private Light2D _light2D;
 
     private void Awake()
@@ -30,14 +30,14 @@ public class LightMod : MonoBehaviour
     private void Update()
     {
         // Update the light properties in case they're changed in the Inspector
-        _light2D.color                 = lightColor;
-        _light2D.intensity             = intensity;
-        _light2D.pointLightInnerAngle  = innerAngle;
-        _light2D.pointLightOuterAngle  = outerAngle;
+        _light2D.color = lightColor;
+        _light2D.intensity = intensity;
+        _light2D.pointLightInnerAngle = innerAngle;
+        _light2D.pointLightOuterAngle = outerAngle;
         _light2D.pointLightInnerRadius = innerRadius;
         _light2D.pointLightOuterRadius = outerRadius;
-        _light2D.falloffIntensity      = falloffStrength;
-        
+        _light2D.falloffIntensity = falloffStrength;
+
         // If onlyOnLeftMouse = true, light is on only while left mouse is pressed
         if (onlyOnLeftMouse)
         {
@@ -48,4 +48,16 @@ public class LightMod : MonoBehaviour
             _light2D.enabled = true;
         }
     }
+    // Add at the bottom of LightMod.cs
+
+    public bool GetIsFlashlightOn()
+    {
+        return _light2D.enabled && (!onlyOnLeftMouse || Input.GetMouseButton(0));
+    }
+
+    public void ForceDisable()
+    {
+        _light2D.enabled = false;
+    }
+
 }
