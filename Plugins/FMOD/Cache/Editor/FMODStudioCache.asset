@@ -39,10 +39,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794783382417950
+  lastModified: 638794786222135227
   FileSizes:
   - Name: Desktop
-    Value: 1012
+    Value: 1052
   Exists: 1
 --- !u!114 &-6663249805098545835
 MonoBehaviour:
@@ -59,10 +59,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794783382397389
+  lastModified: 638794786222114323
   FileSizes:
   - Name: Desktop
-    Value: 583424
+    Value: 1215200
   Exists: 1
 --- !u!114 &-4768006668500518344
 MonoBehaviour:
@@ -112,13 +112,14 @@ MonoBehaviour:
   - {fileID: 271212029490552908}
   - {fileID: 4568012645239556667}
   - {fileID: 8071793067053255001}
+  - {fileID: 1267655042682399446}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6663249805098545835}
   StringsBanks:
   - {fileID: -8262154983233447341}
   cacheVersion: 131847
-  cacheTime: 638794783382417950
+  cacheTime: 638794786222135227
   SerializableEventsDict:
   - key: event:/Music
     index: 0
@@ -130,6 +131,8 @@ MonoBehaviour:
     index: 3
   - key: event:/UI Shop Hover
     index: 4
+  - key: event:/ShopMusic
+    index: 5
 --- !u!114 &271212029490552908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +188,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 40071
+--- !u!114 &1267655042682399446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ShopMusic
+  m_EditorClassIdentifier: 
+  Path: event:/ShopMusic
+  Guid:
+    Data1: 15692953
+    Data2: 1176553358
+    Data3: 662886022
+    Data4: -1014008542
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 73391
 --- !u!114 &4568012645239556667
 MonoBehaviour:
   m_ObjectHideFlags: 0
