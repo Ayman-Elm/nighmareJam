@@ -21,18 +21,22 @@ public class PlayerLook : MonoBehaviour
         if (angle360 >= 45 && angle360 < 135)
         {
             playerSpriteRenderer.sprite = upSprite;
+            GetComponent<SpriteRenderer>().color = Color.white; // test color
         }
         else if (angle360 >= 135 && angle360 < 225)
         {
             playerSpriteRenderer.sprite = leftSprite;
+            GetComponent<SpriteRenderer>().color = Color.green; // test color
         }
         else if (angle360 >= 225 && angle360 < 315)
         {
             playerSpriteRenderer.sprite = downSprite;
+            GetComponent<SpriteRenderer>().color = Color.blue; // test color
         }
         else
         {
             playerSpriteRenderer.sprite = rightSprite;
+            GetComponent<SpriteRenderer>().color = Color.red; // test color
         }
     }
 }
