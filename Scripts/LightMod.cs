@@ -111,6 +111,11 @@ public class LightMod : MonoBehaviour
             {
                 _flashlightSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
                 _flashlightSound.start();
+                // Start the battery life event
+                if (player.batteryLifeInstance.isValid())
+                {
+                    player.batteryLifeInstance.start();
+                }
             }
             else
             {
@@ -118,6 +123,11 @@ public class LightMod : MonoBehaviour
                 if (!flashlightOffSound.IsNull)
                 {
                     AudioManager.Instance.PlayOneShot(flashlightOffSound, this.transform.position);
+                }
+                // Stop the battery life event
+                if (player.batteryLifeInstance.isValid())
+                {
+                    player.batteryLifeInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 }
             }
             _wasLightEnabled = _light2D.enabled;
