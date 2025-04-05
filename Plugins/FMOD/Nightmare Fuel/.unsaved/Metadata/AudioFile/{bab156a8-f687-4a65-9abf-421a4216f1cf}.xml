@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{bab156a8-f687-4a65-9abf-421a4216f1cf}">
+		<property name="assetPath">
+			<value>Nordic Game Jam UI Shop Basic Button 3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.46634920634920635</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b27de4f4-af12-4d90-a610-83e0dea65183}</destination>
+		</relationship>
+	</object>
+</objects>
