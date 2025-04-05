@@ -13,14 +13,15 @@ public class LightMod : MonoBehaviour
     [Header("Spot Settings (for 2D Spot Light)")]
     [Range(0, 360)] public float innerAngle = 70.588f;
     [Range(0, 360)] public float outerAngle = 70.588f;
-    [Range(0, 10)]  public float innerRadius = 1f;
-    [Range(0, 10)]  public float outerRadius = 5.59f;
-    [Range(0, 1)]   public float falloffStrength = 0.109f;
+    [Range(0, 10)] public float innerRadius = 1f;
+    [Range(0, 10)] public float outerRadius = 5.59f;
+    [Range(0, 1)] public float falloffStrength = 0.109f;
 
     [Header("Light Toggle")]
     // When true, the light is only enabled while the left mouse button is held down.
     public bool onlyOnLeftMouse = false;
 
+<<<<<<< HEAD
     [Header("Attack Settings")]
     [Tooltip("Damage dealt per hit.")]
     public float damage = 5f;
@@ -28,6 +29,8 @@ public class LightMod : MonoBehaviour
     [Tooltip("Attacks per second.")]
     public float attackSpeed = 1f;
 
+=======
+>>>>>>> 27a0b594de65a68bf776e92678479ee21957b4f7
     private Light2D _light2D;
 
     // Track when each enemy is next allowed to be hit.
