@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public float energyAmplifier = 1.0f;
     public float attackSpeedAmplifier = 1.0f;
     public float damageAmplifier = 1.0f;
+    public float lightRange = 1.0f;
+    public float lightWidth = 1.0f;
     public int level = 1;
     public int courency = 0;
     public bool isNightmare = false;
