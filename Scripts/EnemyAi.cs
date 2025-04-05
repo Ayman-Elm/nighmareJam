@@ -44,9 +44,15 @@ public class EnemyAI : MonoBehaviour
     private Coroutine orbitRoutine;
     private float stuckTimer = 0f;
 
+
+    public float originalChaseSpeed;
+    public float originalCircleSpeed;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        originalChaseSpeed = chaseSpeed;       // Speed when approaching player
+        originalCircleSpeed = circleSpeed;        // Speed when orbiting around player
     }
 
     void FixedUpdate()
@@ -223,6 +229,21 @@ public class EnemyAI : MonoBehaviour
         {
             stuckTimer = 0f; // reset if we’re moving
         }
+    }
+
+    public void ApplySlow(){
+        
+        chaseSpeed = 1f;        // Speed when approaching player
+        circleSpeed = 1f;        // Speed when orbiting around player
+        dashSpeed = 1f;
+
+
+
+    }
+    public void resetStats(){
+
+        chaseSpeed = originalChaseSpeed;        // Speed when approaching player
+        circleSpeed = originalCircleSpeed;        // Speed when orbiting around player
     }
 
     // ----------------------------------------------------

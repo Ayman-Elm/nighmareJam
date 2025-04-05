@@ -78,8 +78,18 @@ public class UpgradePicker : MonoBehaviour
         }
     }
 
-    private void OnButtonClick()
+private void OnButtonClick()
+{
+    int cost = UpgradeCosts[chosenUpgradeIndex];
+    if (GameManager.Instance.courency >= cost)
     {
+        GameManager.Instance.courency -= cost;
+
+        ApplyUpgrade(UpgradeList[chosenUpgradeIndex]);
+
+        // Apply amplifier values to player + flashlight
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
         // Play click sound
         if (!buttonClickSound.IsNull)
         {
@@ -90,25 +100,21 @@ public class UpgradePicker : MonoBehaviour
         int cost = UpgradeCosts[chosenUpgradeIndex];
         if (GameManager.Instance.courency >= cost)
         {
-            // Deduct currency
-            GameManager.Instance.courency -= cost;
-
-            // Apply the upgrade effect in the GameManager
-            ApplyUpgrade(UpgradeList[chosenUpgradeIndex]);
-
-            // Show a message (so you can see it worked)
-            Debug.Log($"Bought {UpgradeList[chosenUpgradeIndex]} for {cost}. " +
-                      $"Remaining currency: {GameManager.Instance.courency}" + $"amp {GameManager.Instance.speedAmplifier}");
-
-            // Optionally pick a new upgrade after purchase (or keep the same one)
-            chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
-            UpdateButtonLabel();
+            player.ApplyAmplifiers();
         }
-        else
-        {
-            Debug.Log("Not enough currency!");
-        }
+
+        Debug.Log($"Bought {UpgradeList[chosenUpgradeIndex]} for {cost}. " +
+                  $"Remaining currency: {GameManager.Instance.courency}" + 
+                  $" | SpeedAmp: {GameManager.Instance.speedAmplifier}");
+
+        chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
+        UpdateButtonLabel();
     }
+    else
+    {
+        Debug.Log("Not enough currency!");
+    }
+}
 
     private void UpdateButtonLabel()
     {

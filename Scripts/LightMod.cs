@@ -10,6 +10,7 @@ public class LightMod : MonoBehaviour
 {
     [SerializeField] public EventReference flashlightOnSound;
     [SerializeField] public EventReference flashlightOffSound;
+
     [Header("Light Settings")]
     public Color lightColor = Color.white;
     [Range(0, 5)] public float intensity = 1f;
@@ -28,11 +29,13 @@ public class LightMod : MonoBehaviour
     public float damage = 5f;
     public float attackSpeed = 1f;
 
+    private float baseDamage;
+    private float baseAttackSpeed;
+
     private Light2D _light2D;
     private bool _wasLightEnabled = false;
     private EventInstance _flashlightSound;
 
-    // Track when each enemy is next allowed to be hit.
     private Player player;
     private Dictionary<Collider2D, float> _nextAttackTime = new Dictionary<Collider2D, float>();
 
@@ -46,15 +49,35 @@ public class LightMod : MonoBehaviour
         if (col != null) col.isTrigger = true;
     }
 
+    private void Start()
+    {
+        baseDamage = damage;
+        baseAttackSpeed = attackSpeed;
+
+        ApplyAmplifiersFromGameManager(); // Apply initial values
+    }
+
+    public void ApplyAmplifiersFromGameManager()
+    {
+        if (GameManager.Instance != null)
+        {
+            damage = baseDamage * GameManager.Instance.damageAmplifier;
+            attackSpeed = baseAttackSpeed * GameManager.Instance.attackSpeedAmplifier;
+        }
+    }
+
     private void OnDestroy()
     {
-        _flashlightSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        _flashlightSound.release();
+        if (_flashlightSound.isValid())
+        {
+            _flashlightSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _flashlightSound.release();
+        }
     }
 
     private void Update()
     {
-        // Update visuals
+        // Update light visuals
         _light2D.color = lightColor;
         _light2D.intensity = intensity;
         _light2D.pointLightInnerAngle = innerAngle;
@@ -63,20 +86,21 @@ public class LightMod : MonoBehaviour
         _light2D.pointLightOuterRadius = outerRadius;
         _light2D.falloffIntensity = falloffStrength;
 
-        // Energy check first
+        // Don't allow light if out of energy
         if (player.energy <= 0f)
         {
             _light2D.enabled = false;
             return;
         }
 
-        // Light toggle
+        // Light control: hold-to-use logic
         if (onlyOnLeftMouse)
         {
             bool shouldBeEnabled = Input.GetMouseButton(0);
+
             if (shouldBeEnabled && !_wasLightEnabled)
             {
-                _flashlightSound.setParameterByName("position", transform.position.x);
+                _flashlightSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
                 _flashlightSound.start();
             }
             else if (!shouldBeEnabled && _wasLightEnabled)
@@ -87,6 +111,7 @@ public class LightMod : MonoBehaviour
                     AudioManager.Instance.PlayOneShot(flashlightOffSound, this.transform.position);
                 }
             }
+
             _light2D.enabled = shouldBeEnabled;
             _wasLightEnabled = shouldBeEnabled;
         }
@@ -106,14 +131,17 @@ public class LightMod : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other)
-    {
-        if (!_light2D.enabled || player.energy <= 0f) return;
+{
+    if (!_light2D.enabled || player.energy <= 0f) return;
 
-        if (other.CompareTag("Enemy"))
+    if (other.CompareTag("Enemy"))
+    {
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
+            if (!_nextAttackTime.ContainsKey(other))
             {
+                _nextAttackTime[other] = 0f;
                 if (!_nextAttackTime.ContainsKey(other))
                 {
                     _nextAttackTime[other] = 0f;
@@ -125,23 +153,57 @@ public class LightMod : MonoBehaviour
 
                     if (enemy.heatlth <= 0)
                     {
-                        Destroy(enemy.gameObject);
+                        Destroy(enemy.gameObject); // Use Die method to reward currency
                     }
 
                     _nextAttackTime[other] = Time.time + (1f / attackSpeed);
                 }
             }
-        }
+
+            if (Time.time >= _nextAttackTime[other])
+            {
+                // Apply damage
+                enemy.heatlth -= damage;
+
+                // Slow the enemy for 2 seconds at half speed
+                EnemyAI enemyAI = other.GetComponent<EnemyAI>();
+                if (enemyAI != null)
+                {
+                    enemyAI.ApplySlow();
+                } 
+
+                // If the enemy dies...
+                if (enemy.heatlth <= 0)
+                {
+                    Destroy(enemy.gameObject);
+                    GameManager.Instance.courency += enemy.CoinDrop;
+                }
+
+                _nextAttackTime[other] = Time.time + (1f / attackSpeed);
+            }
+        } 
+    
     }
+}
 
     private void OnTriggerExit2D(Collider2D other)
+{
+    if (other.CompareTag("Enemy"))
     {
+        // Remove timing entry if you like
         if (_nextAttackTime.ContainsKey(other))
         {
             _nextAttackTime.Remove(other);
         }
-    }
 
+        // Reset speed stats
+        EnemyAI enemyAI = other.GetComponent<EnemyAI>();
+        if (enemyAI != null)
+        {
+            enemyAI.resetStats();
+        }
+    }
+}
     public bool GetIsFlashlightOn()
     {
         return _light2D.enabled && (!onlyOnLeftMouse || Input.GetMouseButton(0));
