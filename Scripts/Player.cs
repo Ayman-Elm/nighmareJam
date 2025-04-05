@@ -3,52 +3,65 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    public float speed = 5.0f;
+    public float health = 5.0f;
+    public float energy = 100f;
 
-    public float speed = 5.0f; // Speed of the player
-    public float health = 5.0f; // Health of the player
-    public float energy = 100f; // Energy of the player
-    public float energyDrainRate = 10f;       // Energy per second while flashlight is on
-    public float energyRechargeRate = 15f;    // Energy per second when recharging
-    public float rechargeDelay = 3f;          // Time in seconds before recharge starts
+    public float energyDrainRate = 10f;
+    public float energyRechargeRate = 15f;
+    public float rechargeDelay = 3f;
 
-    private float lastFlashlightUseTime; // Time when the flashlight was last used
-    private bool isRecharging = false; // Is the player recharging energy?
+    private float lastFlashlightUseTime;
+    private LightMod flashlight;
 
-    private LightMod flashlight; // Reference to the LightMod script for flashlight control
-    public float invincibilityDuration = 0.5f; // Duration of invincibility after taking damage
-    private bool isInvincible = false; // Is the player invincible?
+    public float invincibilityDuration = 0.5f;
+    private bool isInvincible = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        flashlight = GetComponentInChildren<LightMod>(); // Assumes flashlight is a child GameObject
-        lastFlashlightUseTime = Time.time; // Initialize the last use time
-    }
+void Start()
+{
+    flashlight = GetComponentInChildren<LightMod>();
+    lastFlashlightUseTime = Time.time;
 
-    // Update is called once per frame
+    ApplyAmplifiers(); // ✅ This replaces the original amplifier code
+}
+
     void Update()
     {
         HandleFlashlightEnergy();
        // Debug.Log("Energy: " + energy.ToString("F1"));
     }
+    public void ApplyAmplifiers()
+{
+    if (GameManager.Instance != null)
+    {
+        speed = 5.0f * GameManager.Instance.speedAmplifier;
+        health = 5.0f * GameManager.Instance.healthAmplifier;
+        energy = 100f * GameManager.Instance.energyAmplifier;
+    }
+
+    if (flashlight != null)
+    {
+        flashlight.ApplyAmplifiersFromGameManager();
+    }
+}
+
+
     void HandleFlashlightEnergy()
     {
-        // Check if flashlight is enabled
         bool isUsingFlashlight = flashlight.GetIsFlashlightOn();
 
-        if (isUsingFlashlight && energy > 0)
+        if (isUsingFlashlight && energy > 0f)
         {
             energy -= energyDrainRate * Time.deltaTime;
             lastFlashlightUseTime = Time.time;
 
-            if (energy <= 0)
+            if (energy <= 0f)
             {
-                energy = 0;
-                flashlight.ForceDisable(); // turn off the light
+                energy = 0f;
+                flashlight.ForceDisable();
             }
         }
 
-        // Start recharging after delay
         if (!isUsingFlashlight && Time.time - lastFlashlightUseTime > rechargeDelay)
         {
             if (energy < 100f)
@@ -88,4 +101,5 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(invincibilityDuration);
         isInvincible = false;
     }
+    
 }

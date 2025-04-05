@@ -389,6 +389,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d88d1c26ca4d204fbf73d30d2173518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSound:
+    Guid:
+      Data1: -1123703464
+      Data2: 1214202827
+      Data3: 1820756609
+      Data4: 1727885311
+    Path: event:/UI Shop Click
+  buttonHoverSound:
+    Guid:
+      Data1: 1402451700
+      Data2: 1105113505
+      Data3: 247553182
+      Data4: -1289431940
+    Path: event:/UI Shop Hover
   UpgradeList:
   - MovementSpeed
   - HealthIncrease
@@ -504,6 +518,98 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &745102025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 745102026}
+  - component: {fileID: 745102027}
+  m_Layer: 0
+  m_Name: FmodListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &745102026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745102025}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1097254195}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &745102027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745102025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 1372247511}
+--- !u!1 &1097254194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097254195}
+  - component: {fileID: 1097254196}
+  m_Layer: 0
+  m_Name: -"Audio"-
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1097254195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097254194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 530.9804, y: 127.496376, z: -2.9338052}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 745102026}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1097254196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097254194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b631e61533399a4fb85f4951a51ab4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterBusPath: bus:/
 --- !u!1 &1372247511
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +621,7 @@ GameObject:
   - component: {fileID: 1372247514}
   - component: {fileID: 1372247513}
   - component: {fileID: 1372247512}
+  - component: {fileID: 1372247515}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -596,6 +703,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1372247515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372247511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1388851536
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +799,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d88d1c26ca4d204fbf73d30d2173518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSound:
+    Guid:
+      Data1: -1123703464
+      Data2: 1214202827
+      Data3: 1820756609
+      Data4: 1727885311
+    Path: event:/UI Shop Click
+  buttonHoverSound:
+    Guid:
+      Data1: 1402451700
+      Data2: 1105113505
+      Data3: 247553182
+      Data4: -1289431940
+    Path: event:/UI Shop Hover
   UpgradeList:
   - MovementSpeed
   - HealthIncrease
@@ -887,6 +1052,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d88d1c26ca4d204fbf73d30d2173518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSound:
+    Guid:
+      Data1: -1123703464
+      Data2: 1214202827
+      Data3: 1820756609
+      Data4: 1727885311
+    Path: event:/UI Shop Click
+  buttonHoverSound:
+    Guid:
+      Data1: 1402451700
+      Data2: 1105113505
+      Data3: 247553182
+      Data4: -1289431940
+    Path: event:/UI Shop Hover
   UpgradeList:
   - MovementSpeed
   - HealthIncrease
@@ -1311,3 +1490,4 @@ SceneRoots:
   - {fileID: 606842811}
   - {fileID: 1923678030}
   - {fileID: 2114195831}
+  - {fileID: 1097254195}
