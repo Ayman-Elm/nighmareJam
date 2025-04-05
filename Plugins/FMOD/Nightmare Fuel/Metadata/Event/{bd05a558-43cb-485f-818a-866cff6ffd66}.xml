@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{bd05a558-43cb-485f-818a-866cff6ffd66}">
 		<property name="name">
-			<value>UI Shop</value>
+			<value>UI Shop Click</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -56,7 +56,11 @@
 			<destination>{8b8528bf-15b4-4578-9b8f-f6947ea4b410}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{28062daa-8a7f-41a8-8f30-d816e5516382}" />
+	<object class="EventAutomatableProperties" id="{28062daa-8a7f-41a8-8f30-d816e5516382}">
+		<property name="maxVoices">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{9656d4f7-6b1e-4478-a345-bd4176fd308a}" />
 	<object class="GroupTrack" id="{c3ed47e8-5fe2-4435-a331-b4de7afffa22}">
 		<relationship name="modules">

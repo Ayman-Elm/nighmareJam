@@ -1,9 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;  // For Button
 using TMPro;           // For TMP_Text (if you're using TextMeshPro)
+using FMODUnity;      // For FMOD functionality
+using UnityEngine.EventSystems;  // For EventTrigger
 
 public class UpgradePicker : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private EventReference buttonClickSound;
+    [SerializeField] private EventReference buttonHoverSound;
+
     // List of possible upgrades
     [SerializeField] 
     private string[] UpgradeList = 
@@ -48,12 +54,38 @@ public class UpgradePicker : MonoBehaviour
         // Update button text to show which upgrade we got and how much it costs
         UpdateButtonLabel();
 
-        // Listen for clicks
+        // Listen for clicks and hover events
         btn.onClick.AddListener(OnButtonClick);
+        
+        // Add hover events
+        EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
+        if (trigger == null)
+        {
+            trigger = btn.gameObject.AddComponent<EventTrigger>();
+        }
+
+        EventTrigger.Entry pointerEnter = new EventTrigger.Entry();
+        pointerEnter.eventID = EventTriggerType.PointerEnter;
+        pointerEnter.callback.AddListener((data) => OnButtonHover());
+        trigger.triggers.Add(pointerEnter);
+    }
+
+    private void OnButtonHover()
+    {
+        if (!buttonHoverSound.IsNull)
+        {
+            AudioManager.Instance.PlayOneShot(buttonHoverSound);
+        }
     }
 
     private void OnButtonClick()
     {
+        // Play click sound
+        if (!buttonClickSound.IsNull)
+        {
+            AudioManager.Instance.PlayOneShot(buttonClickSound);
+        }
+
         // Check if player has enough currency for this upgrade
         int cost = UpgradeCosts[chosenUpgradeIndex];
         if (GameManager.Instance.courency >= cost)
