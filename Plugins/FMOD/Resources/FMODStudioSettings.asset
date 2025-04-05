@@ -536,8 +536,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../Documents/FMOD Studio/Nightmare Fuel/Nightmare Fuel.fspro
-  sourceBankPath: ../Documents/FMOD Studio/Nightmare Fuel/Build
+  sourceProjectPath: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Nightmare Fuel.fspro
+  sourceBankPath: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
