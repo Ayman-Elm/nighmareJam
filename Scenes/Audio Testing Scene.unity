@@ -642,6 +642,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: energy
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Path
+      value: event:/FlashLightOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Path
+      value: event:/FlashLightOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Guid.Data1
+      value: -1381526365
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Guid.Data2
+      value: 1286814355
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Guid.Data3
+      value: 1582730368
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Guid.Data4
+      value: 1482601976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Guid.Data1
+      value: 673511276
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Guid.Data2
+      value: 1255494075
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Guid.Data3
+      value: 258316222
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Guid.Data4
+      value: -187630411
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

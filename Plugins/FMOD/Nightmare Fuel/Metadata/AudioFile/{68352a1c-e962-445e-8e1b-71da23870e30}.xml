@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{68352a1c-e962-445e-8e1b-71da23870e30}">
+		<property name="assetPath">
+			<value>UI Button Back Press.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.1201587301587304</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b27de4f4-af12-4d90-a610-83e0dea65183}</destination>
+		</relationship>
+	</object>
+</objects>

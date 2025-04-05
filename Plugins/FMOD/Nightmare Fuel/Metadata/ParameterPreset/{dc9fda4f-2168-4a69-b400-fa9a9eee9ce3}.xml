@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{dc9fda4f-2168-4a69-b400-fa9a9eee9ce3}">
+		<property name="name">
+			<value>Battery Life</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bb3ea03a-1282-48aa-905d-30789665fd0e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{b86384e6-42ef-4329-a792-82dce5fc653a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{b86384e6-42ef-4329-a792-82dce5fc653a}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
