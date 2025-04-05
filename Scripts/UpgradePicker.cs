@@ -52,7 +52,7 @@ public class UpgradePicker : MonoBehaviour
         chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
 
         // Update button text to show which upgrade we got and how much it costs
-        UpdateButtonLabel();
+        // UpdateButtonLabel();
 
         // Listen for clicks and hover events
         btn.onClick.AddListener(OnButtonClick);
@@ -105,22 +105,22 @@ public class UpgradePicker : MonoBehaviour
                       $" | SpeedAmp: {GameManager.Instance.speedAmplifier}");
 
             chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
-            UpdateButtonLabel();
+            // UpdateButtonLabel();
         }
     }
 
-    private void UpdateButtonLabel()
-    {
-        // e.g. "MovementSpeed - $50"
-        string upgradeName = UpgradeList[chosenUpgradeIndex];
-        int cost = UpgradeCosts[chosenUpgradeIndex];
+    // private void UpdateButtonLabel()
+    // {
+    //     // e.g. "MovementSpeed - $50"
+    //     string upgradeName = UpgradeList[chosenUpgradeIndex];
+    //     int cost = UpgradeCosts[chosenUpgradeIndex];
 
-        // If not using TextMeshPro, do the same with legacy Text
-        if (btnText != null)
-        {
-            btnText.text = $"{upgradeName} - ${cost}";
-        }
-    }
+    //     // If not using TextMeshPro, do the same with legacy Text
+    //     if (btnText != null)
+    //     {
+    //         btnText.text = $"{upgradeName} - ${cost}";
+    //     }
+    // }
 
     private void ApplyUpgrade(string upgradeName)
     {
