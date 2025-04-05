@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794618753534632
+  lastModified: 638794624933934100
   FileSizes:
   - Name: Desktop
     Value: 866
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794618753521454
+  lastModified: 638794624933844136
   FileSizes:
   - Name: Desktop
     Value: 545024
@@ -92,7 +92,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -8262154983233447341}
   cacheVersion: 131847
-  cacheTime: 638794618753534632
+  cacheTime: 638794624933934100
   SerializableEventsDict:
   - key: event:/Music
     index: 0
