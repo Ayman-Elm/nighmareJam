@@ -443,6 +443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 327943098362198208, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 953567633077170734, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.427
@@ -544,6 +548,70 @@ PrefabInstance:
     - target: {fileID: 6021015377665910702, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: energy
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: intensity
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: innerAngle
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: outerAngle
+      value: 131
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: onlyOnLeftMouse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Path
+      value: event:/FlashLightOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Path
+      value: event:/FlashLightOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Guid.Data1
+      value: -1381526365
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Guid.Data2
+      value: 1286814355
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Guid.Data3
+      value: 1582730368
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOnSound.Guid.Data4
+      value: 1482601976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Guid.Data1
+      value: 673511276
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Guid.Data2
+      value: 1255494075
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Guid.Data3
+      value: 258316222
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: flashlightOffSound.Guid.Data4
+      value: -187630411
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
