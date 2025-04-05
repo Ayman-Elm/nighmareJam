@@ -421,8 +421,8 @@ Transform:
   m_GameObject: {fileID: 566171897}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6215794, y: 1.6126504, z: 0}
-  m_LocalScale: {x: 200, y: 200, z: 200}
+  m_LocalPosition: {x: -3.6, y: -1.9, z: 0}
+  m_LocalScale: {x: 409.12, y: 255.9, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -501,26 +501,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 341942207519807169, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 926114568576542543, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
-      propertyPath: m_Radius
-      value: 1.3256499
-      objectReference: {fileID: 0}
-    - target: {fileID: 926114568576542543, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 926114568576542543, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.4475608
-      objectReference: {fileID: 0}
-    - target: {fileID: 926114568576542543, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
-      propertyPath: m_Offset.y
-      value: 1.3819134
-      objectReference: {fileID: 0}
     - target: {fileID: 5883854845555192943, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -565,20 +545,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6021015377665910702, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8144227358764772682, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 8144227358764772682, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8855692602162835673, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

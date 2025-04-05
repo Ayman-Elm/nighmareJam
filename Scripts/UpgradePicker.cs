@@ -1,0 +1,135 @@
+using UnityEngine;
+using UnityEngine.UI;  // For Button
+using TMPro;           // For TMP_Text (if you're using TextMeshPro)
+
+public class UpgradePicker : MonoBehaviour
+{
+    // List of possible upgrades
+    [SerializeField] 
+    private string[] UpgradeList = 
+    { 
+        "MovementSpeed", 
+        "HealthIncrease", 
+        "AttackSpeed", 
+        "EnergyIncrease", 
+        "AttackDamage", 
+        "LightRange", 
+        "LightWidth" 
+    };
+
+    // Matching costs for each upgrade (by index)
+    [SerializeField] 
+    private int[] UpgradeCosts = 
+    {
+        50,  // MovementSpeed
+        100, // HealthIncrease
+        75,  // AttackSpeed
+        80,  // EnergyIncrease
+        120, // AttackDamage
+        200, // LightRange
+        150  // LightWidth
+    };
+
+    // UI references
+    public Button btn;        // Assign in Inspector
+    public TMP_Text btnText;  // If using TextMeshPro for the button label
+
+    private int chosenUpgradeIndex;
+
+    private void Start()
+    {
+        // If you haven't assigned a separate TMP_Text in the inspector,
+        // you can also get it from the button's children:
+        // btnText = btn.GetComponentInChildren<TMP_Text>();
+
+        // Choose an upgrade at Start (randomly)
+        chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
+
+        // Update button text to show which upgrade we got and how much it costs
+        UpdateButtonLabel();
+
+        // Listen for clicks
+        btn.onClick.AddListener(OnButtonClick);
+    }
+
+    private void OnButtonClick()
+    {
+        // Check if player has enough currency for this upgrade
+        int cost = UpgradeCosts[chosenUpgradeIndex];
+        if (GameManager.Instance.courency >= cost)
+        {
+            // Deduct currency
+            GameManager.Instance.courency -= cost;
+
+            // Apply the upgrade effect in the GameManager
+            ApplyUpgrade(UpgradeList[chosenUpgradeIndex]);
+
+            // Show a message (so you can see it worked)
+            Debug.Log($"Bought {UpgradeList[chosenUpgradeIndex]} for {cost}. " +
+                      $"Remaining currency: {GameManager.Instance.courency}" + $"amp {GameManager.Instance.speedAmplifier}");
+
+            // Optionally pick a new upgrade after purchase (or keep the same one)
+            chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
+            UpdateButtonLabel();
+        }
+        else
+        {
+            Debug.Log("Not enough currency!");
+        }
+    }
+
+    private void UpdateButtonLabel()
+    {
+        // e.g. "MovementSpeed - $50"
+        string upgradeName = UpgradeList[chosenUpgradeIndex];
+        int cost = UpgradeCosts[chosenUpgradeIndex];
+
+        // If not using TextMeshPro, do the same with legacy Text
+        if (btnText != null)
+        {
+            btnText.text = $"{upgradeName} - ${cost}";
+        }
+    }
+
+    private void ApplyUpgrade(string upgradeName)
+    {
+        switch (upgradeName)
+        {
+            case "MovementSpeed":
+                // Increase the speedAmplifier
+                GameManager.Instance.speedAmplifier += 0.1f;
+                break;
+
+            case "HealthIncrease":
+                // Increase the healthAmplifier
+                GameManager.Instance.healthAmplifier += 0.1f;
+                break;
+
+            case "AttackSpeed":
+                // Increase attack speed amplifier
+                GameManager.Instance.attackSpeedAmplifier += 0.1f;
+                break;
+
+            case "EnergyIncrease":
+                // Increase the energy amplifier
+                GameManager.Instance.energyAmplifier += 0.1f;
+                break;
+
+            case "AttackDamage":
+                // Increase damage amplifier
+                GameManager.Instance.damageAmplifier += 0.1f;
+                break;
+
+            case "LightRange":
+                // If you have a custom variable or method for this, call it
+                // Example: GameManager.Instance.lightRange += 1.0f;
+                Debug.Log("LightRange upgrade applied!");
+                break;
+
+            case "LightWidth":
+                // Another placeholder upgrade effect
+                Debug.Log("LightWidth upgrade applied!");
+                break;
+        }
+    }
+}
