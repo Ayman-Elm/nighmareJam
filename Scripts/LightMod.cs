@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using FMODUnity;
+using FMOD.Studio;
 
 [RequireComponent(typeof(Light2D))]
 [RequireComponent(typeof(Collider2D))]
 public class LightMod : MonoBehaviour
 {
+    [SerializeField] public EventReference flashlightOnSound;
+    [SerializeField] public EventReference flashlightOffSound;
     [Header("Light Settings")]
     public Color lightColor = Color.white;
     [Range(0, 5)] public float intensity = 1f;
@@ -29,6 +33,8 @@ public class LightMod : MonoBehaviour
     public float attackSpeed = 1f;
 
     private Light2D _light2D;
+    private bool _wasLightEnabled = false;
+    private EventInstance _flashlightSound;
 
     // Track when each enemy is next allowed to be hit.
     private Dictionary<Collider2D, float> _nextAttackTime = new Dictionary<Collider2D, float>();
@@ -36,6 +42,7 @@ public class LightMod : MonoBehaviour
     private void Awake()
     {
         _light2D = GetComponent<Light2D>();
+        _flashlightSound = RuntimeManager.CreateInstance(flashlightOnSound);
 
         // Ensure the collider is a trigger for OnTriggerEnter/Stay/Exit
         Collider2D col = GetComponent<Collider2D>();
@@ -43,6 +50,12 @@ public class LightMod : MonoBehaviour
         {
             col.isTrigger = true;
         }
+    }
+
+    private void OnDestroy()
+    {
+        _flashlightSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        _flashlightSound.release();
     }
 
     private void Update()
@@ -59,11 +72,27 @@ public class LightMod : MonoBehaviour
         // Toggle light based on left mouse button if onlyOnLeftMouse is true
         if (onlyOnLeftMouse)
         {
-            _light2D.enabled = Input.GetMouseButton(0);
+            bool shouldBeEnabled = Input.GetMouseButton(0);
+            if (shouldBeEnabled && !_wasLightEnabled)
+            {
+                _flashlightSound.setParameterByName("position", transform.position.x);
+                _flashlightSound.start();
+            }
+            else if (!shouldBeEnabled && _wasLightEnabled)
+            {
+                _flashlightSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                if (!flashlightOffSound.IsNull)
+                {
+                    AudioManager.Instance.PlayOneShot(flashlightOffSound, this.transform.position);
+                }
+            }
+            _light2D.enabled = shouldBeEnabled;
+            _wasLightEnabled = shouldBeEnabled;
         }
         else
         {
             _light2D.enabled = true;
+            _wasLightEnabled = true;
         }
     }
 
