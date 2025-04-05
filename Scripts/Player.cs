@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -6,6 +7,10 @@ public class Player : MonoBehaviour
     public float speed = 5.0f; // Speed of the player
     public float health = 5.0f; // Health of the player
     public float energy = 0f; // Energy of the player
+
+    public float invincibilityDuration = 0.5f; // Duration of invincibility after taking damage
+    private bool isInvincible = false; // Is the player invincible?
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +25,8 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (isInvincible) return; // Don't take damage if currently invincible
+
         health -= amount;
         Debug.Log("Player took " + amount + " damage! Current HP: " + health);
 
@@ -27,12 +34,23 @@ public class Player : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            StartCoroutine(InvincibilityFrames());
+        }
     }
 
     private void Die()
     {
         Debug.Log("Player died!");
-        // TODO: Add death logic (disable movement, reload scene, etc.)
-        Destroy(gameObject); // simple placeholder for now
+        Destroy(gameObject);
+    }
+
+    private IEnumerator InvincibilityFrames()
+    {
+        isInvincible = true;
+        // Optional: flash sprite, play SFX, visual feedback
+        yield return new WaitForSeconds(invincibilityDuration);
+        isInvincible = false;
     }
 }
