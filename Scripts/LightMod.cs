@@ -10,6 +10,7 @@ public class LightMod : MonoBehaviour
 {
     [SerializeField] public EventReference flashlightOnSound;
     [SerializeField] public EventReference flashlightOffSound;
+    [SerializeField] public EventReference enemyDeathSound;
 
     [Header("Light Settings")]
     public Color lightColor = Color.white;
@@ -174,6 +175,10 @@ public class LightMod : MonoBehaviour
                         if (GameManager.Instance != null)
                         {
                             GameManager.Instance.courency += enemy.CoinDrop;
+                        }
+                        if (!enemyDeathSound.IsNull)
+                        {
+                            AudioManager.Instance.PlayOneShot(enemyDeathSound, enemy.transform.position);
                         }
                         Destroy(enemy.gameObject);
                     }
