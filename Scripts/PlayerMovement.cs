@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
-    private Player playerStats; // Reference to your Player.cs script
+    private Player playerStats; // Reference to Player.cs script
 
     void Start()
     {
