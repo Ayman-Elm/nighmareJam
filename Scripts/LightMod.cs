@@ -21,7 +21,6 @@ public class LightMod : MonoBehaviour
     // When true, the light is only enabled while the left mouse button is held down.
     public bool onlyOnLeftMouse = false;
 
-<<<<<<< HEAD
     [Header("Attack Settings")]
     [Tooltip("Damage dealt per hit.")]
     public float damage = 5f;
@@ -29,8 +28,6 @@ public class LightMod : MonoBehaviour
     [Tooltip("Attacks per second.")]
     public float attackSpeed = 1f;
 
-=======
->>>>>>> 27a0b594de65a68bf776e92678479ee21957b4f7
     private Light2D _light2D;
 
     // Track when each enemy is next allowed to be hit.
@@ -42,7 +39,7 @@ public class LightMod : MonoBehaviour
 
         // Ensure the collider is a trigger for OnTriggerEnter/Stay/Exit
         Collider2D col = GetComponent<Collider2D>();
-        if (col != null) 
+        if (col != null)
         {
             col.isTrigger = true;
         }
@@ -51,14 +48,14 @@ public class LightMod : MonoBehaviour
     private void Update()
     {
         // Update Light2D properties from public fields
-        _light2D.color                 = lightColor;
-        _light2D.intensity             = intensity;
-        _light2D.pointLightInnerAngle  = innerAngle;
-        _light2D.pointLightOuterAngle  = outerAngle;
+        _light2D.color = lightColor;
+        _light2D.intensity = intensity;
+        _light2D.pointLightInnerAngle = innerAngle;
+        _light2D.pointLightOuterAngle = outerAngle;
         _light2D.pointLightInnerRadius = innerRadius;
         _light2D.pointLightOuterRadius = outerRadius;
-        _light2D.falloffIntensity      = falloffStrength;
-        
+        _light2D.falloffIntensity = falloffStrength;
+
         // Toggle light based on left mouse button if onlyOnLeftMouse is true
         if (onlyOnLeftMouse)
         {
@@ -124,4 +121,17 @@ public class LightMod : MonoBehaviour
             _nextAttackTime.Remove(other);
         }
     }
+
+    // Add at the bottom of LightMod.cs
+
+    public bool GetIsFlashlightOn()
+    {
+        return _light2D.enabled && (!onlyOnLeftMouse || Input.GetMouseButton(0));
+    }
+
+    public void ForceDisable()
+    {
+        _light2D.enabled = false;
+    }
+
 }
