@@ -66,10 +66,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794823557865330
+  lastModified: 638794922593198714
   FileSizes:
   - Name: Desktop
-    Value: 1102
+    Value: 1234
   Exists: 1
 --- !u!114 &-6663249805098545835
 MonoBehaviour:
@@ -86,10 +86,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794872571582523
+  lastModified: 638794922593170103
   FileSizes:
   - Name: Desktop
-    Value: 1253728
+    Value: 1797728
   Exists: 1
 --- !u!114 &-4768006668500518344
 MonoBehaviour:
@@ -111,13 +111,40 @@ MonoBehaviour:
     Data4: -187630411
   Banks:
   - {fileID: -6663249805098545835}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 1850
+--- !u!114 &-2889607839931028863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MainMusic
+  m_EditorClassIdentifier: 
+  Path: event:/MainMusic
+  Guid:
+    Data1: -1722767615
+    Data2: 1211359067
+    Data3: 753608583
+    Data4: 273167451
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 61714
 --- !u!114 &-358739437063006154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,13 +195,16 @@ MonoBehaviour:
   - {fileID: 1267655042682399446}
   - {fileID: -358739437063006154}
   - {fileID: -8857829888524886583}
+  - {fileID: 2361785204692411580}
+  - {fileID: 4699920802465559106}
+  - {fileID: -2889607839931028863}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6663249805098545835}
   StringsBanks:
   - {fileID: -8262154983233447341}
   cacheVersion: 131847
-  cacheTime: 638794872571582523
+  cacheTime: 638794922593198714
   SerializableEventsDict:
   - key: event:/FlashLightOff
     index: 0
@@ -190,6 +220,12 @@ MonoBehaviour:
     index: 5
   - key: event:/NightmareMusic
     index: 6
+  - key: event:/PlayerDeath
+    index: 7
+  - key: event:/PlayerDamaged
+    index: 8
+  - key: event:/MainMusic
+    index: 9
 --- !u!114 &271212029490552908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +280,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 73391
+  Length: 15000
+--- !u!114 &2361785204692411580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerDeath
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerDeath
+  Guid:
+    Data1: -1861062780
+    Data2: 1184283842
+    Data3: -2136644713
+    Data4: -668327434
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3000
 --- !u!114 &4568012645239556667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +335,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &4699920802465559106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerDamaged
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerDamaged
+  Guid:
+    Data1: 2117631172
+    Data2: 1094163252
+    Data3: -1217019760
+    Data4: 1168413149
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3516
 --- !u!114 &8071793067053255001
 MonoBehaviour:
   m_ObjectHideFlags: 0

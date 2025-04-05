@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     public float health = 5.0f;
     public float energy = 100f;
 
+    [Header("FMOD Events")]
+    [SerializeField] public EventReference playerDamagedSound;
+    [SerializeField] public EventReference playerDeathSound;
+
     public float energyDrainRate = 10f;
     public float energyRechargeRate = 15f;
     public float rechargeDelay = 3f;
@@ -103,6 +107,12 @@ public class Player : MonoBehaviour
         health -= amount;
         Debug.Log("Player took " + amount + " damage! Current HP: " + health);
 
+        // Play damage sound
+        if (!playerDamagedSound.IsNull)
+        {
+            AudioManager.Instance.PlayOneShot(playerDamagedSound, transform.position);
+        }
+
         if (health <= 0)
         {
             Die();
@@ -116,6 +126,11 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died!");
+        // Play death sound
+        if (!playerDeathSound.IsNull)
+        {
+            AudioManager.Instance.PlayOneShot(playerDeathSound, transform.position);
+        }
         Destroy(gameObject);
     }
 
