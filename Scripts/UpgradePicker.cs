@@ -78,43 +78,36 @@ public class UpgradePicker : MonoBehaviour
         }
     }
 
-private void OnButtonClick()
-{
-    int cost = UpgradeCosts[chosenUpgradeIndex];
-    if (GameManager.Instance.courency >= cost)
+    private void OnButtonClick()
     {
-        GameManager.Instance.courency -= cost;
-
-        ApplyUpgrade(UpgradeList[chosenUpgradeIndex]);
-
-        // Apply amplifier values to player + flashlight
-        Player player = FindObjectOfType<Player>();
-        if (player != null)
         // Play click sound
         if (!buttonClickSound.IsNull)
         {
             AudioManager.Instance.PlayOneShot(buttonClickSound);
         }
 
-        // Check if player has enough currency for this upgrade
         int cost = UpgradeCosts[chosenUpgradeIndex];
         if (GameManager.Instance.courency >= cost)
         {
-            player.ApplyAmplifiers();
+            GameManager.Instance.courency -= cost;
+
+            ApplyUpgrade(UpgradeList[chosenUpgradeIndex]);
+
+            // Apply amplifier values to player + flashlight
+            Player player = FindObjectOfType<Player>();
+            if (player != null)
+            {
+                player.ApplyAmplifiers();
+            }
+
+            Debug.Log($"Bought {UpgradeList[chosenUpgradeIndex]} for {cost}. " +
+                      $"Remaining currency: {GameManager.Instance.courency}" + 
+                      $" | SpeedAmp: {GameManager.Instance.speedAmplifier}");
+
+            chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
+            UpdateButtonLabel();
         }
-
-        Debug.Log($"Bought {UpgradeList[chosenUpgradeIndex]} for {cost}. " +
-                  $"Remaining currency: {GameManager.Instance.courency}" + 
-                  $" | SpeedAmp: {GameManager.Instance.speedAmplifier}");
-
-        chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
-        UpdateButtonLabel();
     }
-    else
-    {
-        Debug.Log("Not enough currency!");
-    }
-}
 
     private void UpdateButtonLabel()
     {
