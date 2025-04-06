@@ -2,76 +2,79 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float moveSpeed = 0f; // Could use your Player.cs speed if desired
+    [SerializeField] private float moveSpeed = 5f; 
+    // ^ You can expose this in the Inspector or override it with "playerStats.speed" if you have a separate Player script.
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
     public Animator animator;
-    private Player playerStats; // Reference to Player.cs script
     
-    // Add this to flip only the sprite, not the child's transform
+    // Reference to your "Player" script, if you need it
+    private Player playerStats; 
+    
+    // SpriteRenderer for flipping horizontally
     private SpriteRenderer sr;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        // If you have a Player script that includes "speed":
         playerStats = GetComponent<Player>();
-
-        // Get the SpriteRenderer from the same GameObject or from a child
+        
+        // If your SpriteRenderer is on the same GameObject:
         sr = GetComponent<SpriteRenderer>();
-        // If your sprite renderer is on a child, do:
-        // sr = GetComponentInChildren<SpriteRenderer>();
+        // If on a child, use "GetComponentInChildren<SpriteRenderer>()" instead.
     }
 
     void Update()
     {
-        // Gather input
+        // 1) Gather horizontal/vertical input
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
-
-        // Optionally use speed from Player.cs
-        moveSpeed = playerStats.speed;
-
-        // Normalize so diagonal speed is not faster
+        
+        // 2) If you want to use speed from Player script:
+        // moveSpeed = playerStats.speed;
+        
+        // 3) Normalize so diagonal movement isn’t faster
         moveInput = moveInput.normalized;
-
+        
         // --- ANIMATION STATE LOGIC ---
-        // If moving vertically, check up or down
+        // If moving up
         if (moveInput.y > 0)
         {
-            // Going up
             animator.SetBool("UpTrue", true);
             animator.SetBool("DownTrue", false);
             animator.SetBool("RunTrue", false);
         }
+        // If moving down
         else if (moveInput.y < 0)
         {
-            // Going down
             animator.SetBool("UpTrue", false);
             animator.SetBool("DownTrue", true);
             animator.SetBool("RunTrue", false);
         }
-        // If moving horizontally, set “RunTrue” and flip based on direction
+        // If moving horizontally
         else if (moveInput.x != 0)
         {
             animator.SetBool("UpTrue", false);
             animator.SetBool("DownTrue", false);
             animator.SetBool("RunTrue", true);
 
-            // Use flipX to face left or right
+            // Flip sprite left or right
             if (moveInput.x > 0)
             {
-                // Face right
-                sr.flipX = false;
+                sr.flipX = false; // face right
             }
             else
             {
-                // Face left
-                sr.flipX = true;
+                sr.flipX = true; // face left
             }
         }
+        // If not pressing anything (idle)
         else
         {
-            // No input, so idle. Turn all directional bools off.
+            // All booleans set to false → Goes to idle animation (default state)
             animator.SetBool("UpTrue", false);
             animator.SetBool("DownTrue", false);
             animator.SetBool("RunTrue", false);
@@ -80,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Apply velocity in FixedUpdate for physics
+        // Apply velocity here for physics consistency
         rb.linearVelocity = moveInput * moveSpeed;
     }
 }
