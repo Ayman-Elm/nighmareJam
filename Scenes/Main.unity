@@ -2176,7 +2176,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285791657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2202,6 +2202,9 @@ MonoBehaviour:
   startTime: 10
   sceneToLoad: shop scene
   timerText: {fileID: 1285791660}
+  flashlightToFlash: {fileID: 952663463}
+  flashDuration: 2
+  targetFlashIntensity: 1000
 --- !u!114 &1285791660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2915,7 +2918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
       propertyPath: innerAngle
-      value: 360
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
       propertyPath: outerAngle
