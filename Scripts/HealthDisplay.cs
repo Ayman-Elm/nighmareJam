@@ -11,7 +11,7 @@ public class HealthDisplayTMP : MonoBehaviour
         if (player != null && healthTextTMP != null)
         {
             // Format however you like:
-            healthTextTMP.text = $"HP: {player.health:F1}";
+            healthTextTMP.text = $": {player.health:F1}";
         }
     }
 }

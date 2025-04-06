@@ -10,7 +10,7 @@ public class CoinDisplayTMP : MonoBehaviour
         if (GameManager.Instance != null)
         {
             // Update the TMP text with the coin amount
-            coinTextTMP.text = $"Coins: {GameManager.Instance.courency}";
+            coinTextTMP.text = $": {GameManager.Instance.courency}";
         }
     }
 }
