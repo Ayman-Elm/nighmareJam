@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
+using FMODUnity;
+using FMOD.Studio;
 
 public class CountdownTimer : MonoBehaviour
 {
@@ -21,6 +23,9 @@ public class CountdownTimer : MonoBehaviour
     {
         currentTime = startTime;
         UpdateTimerUI();
+        
+        // Start the main music when entering the scene
+        RuntimeManager.PlayOneShot("event:/MainMusic");
     }
 
     void Update()
@@ -45,44 +50,55 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 
-IEnumerator FlashAndLoad()
-{
-    Time.timeScale = 0f;
-
-    float elapsed = 0f;
-    float originalIntensity = flashlightToFlash.intensity;
-    float originalRadius = flashlightToFlash.pointLightOuterRadius;
-    float originalAngle = flashlightToFlash.pointLightOuterAngle;
-
-    float targetIntensity = targetFlashIntensity;
-    float targetRadius = 100f; // 💡 really big to cover screen
-    float targetAngle = 360f;  // 🔄 full circle flood
-
-    while (elapsed < flashDuration)
+    IEnumerator FlashAndLoad()
     {
-        elapsed += Time.unscaledDeltaTime;
-        float t = elapsed / flashDuration;
+        Time.timeScale = 0f;
 
-        flashlightToFlash.intensity = Mathf.Lerp(originalIntensity, targetIntensity, t);
-        flashlightToFlash.pointLightOuterRadius = Mathf.Lerp(originalRadius, targetRadius, t);
-        flashlightToFlash.pointLightOuterAngle = Mathf.Lerp(originalAngle, targetAngle, t);
-        flashlightToFlash.pointLightInnerRadius = flashlightToFlash.pointLightOuterRadius * 0.5f;
-        flashlightToFlash.pointLightInnerAngle = flashlightToFlash.pointLightOuterAngle * 0.5f;
+        float elapsed = 0f;
+        float originalIntensity = flashlightToFlash.intensity;
+        float originalRadius = flashlightToFlash.pointLightOuterRadius;
+        float originalAngle = flashlightToFlash.pointLightOuterAngle;
 
-        yield return null;
+        float targetIntensity = targetFlashIntensity;
+        float targetRadius = 100f; // 💡 really big to cover screen
+        float targetAngle = 360f;  // 🔄 full circle flood
+
+        while (elapsed < flashDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / flashDuration;
+
+            flashlightToFlash.intensity = Mathf.Lerp(originalIntensity, targetIntensity, t);
+            flashlightToFlash.pointLightOuterRadius = Mathf.Lerp(originalRadius, targetRadius, t);
+            flashlightToFlash.pointLightOuterAngle = Mathf.Lerp(originalAngle, targetAngle, t);
+            flashlightToFlash.pointLightInnerRadius = flashlightToFlash.pointLightOuterRadius * 0.5f;
+            flashlightToFlash.pointLightInnerAngle = flashlightToFlash.pointLightOuterAngle * 0.5f;
+
+            yield return null;
+        }
+
+        // Snap to final values just in case
+        flashlightToFlash.intensity = targetIntensity;
+        flashlightToFlash.pointLightOuterRadius = targetRadius;
+        flashlightToFlash.pointLightOuterAngle = targetAngle;
+        flashlightToFlash.pointLightInnerRadius = targetRadius * 0.5f;
+        flashlightToFlash.pointLightInnerAngle = targetAngle * 0.5f;
+
+        // Stop all instances of the MainMusic event
+        RuntimeManager.StudioSystem.getEvent("event:/MainMusic", out var eventDescription);
+        if (eventDescription.isValid())
+        {
+            eventDescription.getInstanceList(out var instances);
+            foreach (var instance in instances)
+            {
+                instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                instance.release();
+            }
+        }
+
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(sceneToLoad);
     }
-
-    // Snap to final values just in case
-    flashlightToFlash.intensity = targetIntensity;
-    flashlightToFlash.pointLightOuterRadius = targetRadius;
-    flashlightToFlash.pointLightOuterAngle = targetAngle;
-    flashlightToFlash.pointLightInnerRadius = targetRadius * 0.5f;
-    flashlightToFlash.pointLightInnerAngle = targetAngle * 0.5f;
-
-    Time.timeScale = 1f;
-    SceneManager.LoadScene(sceneToLoad);
-}
-
 
     void UpdateTimerUI()
     {

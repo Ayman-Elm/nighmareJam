@@ -9,12 +9,6 @@ public class BackButton : MonoBehaviour
     [Tooltip("Name of the scene to return to")]
     public string returnSceneName = "GameScene"; // Set this in the Inspector
 
-    private void Start()
-    {
-        // Start the shop music when entering the scene
-        RuntimeManager.PlayOneShot("event:/ShopMusic");
-    }
-
     public void GoBack()
     {
         // Stop all instances of the ShopMusic event
@@ -39,7 +33,7 @@ public class BackButton : MonoBehaviour
         SceneManager.LoadScene(returnSceneName);
     }
 
-        public void QuitGame()
+    public void QuitGame()
     {
         Debug.Log("Quit button pressed!");
 
