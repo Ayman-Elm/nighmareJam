@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{cc31eb5a-a5d7-4483-8327-3a690d2d71fb}">
+	<object class="AudioFile" id="{e901cc80-724e-4196-903c-602a9a1397a1}">
 		<property name="assetPath">
-			<value>Nordic Game Jam Play Again Button.wav</value>
+			<value>Music - Shop - Draft 2.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<property name="length">
-			<value>4.0576870748299321</value>
+			<value>15</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{b27de4f4-af12-4d90-a610-83e0dea65183}</destination>
