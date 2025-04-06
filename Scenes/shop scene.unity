@@ -2355,7 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2612be22ec4e4e945b059cd224ec439c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnSceneName: Main
+  returnSceneName: BedRoom
 --- !u!1 &1923678027
 GameObject:
   m_ObjectHideFlags: 0
