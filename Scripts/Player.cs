@@ -2,9 +2,13 @@ using UnityEngine;
 using System.Collections;
 using FMODUnity;
 using FMOD.Studio;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [Header("SCENE")]
+    public string returnSceneName = "GameScene";
+
     public float speed = 5.0f;
     public float health = 5.0f;
     public float energy = 100f;
@@ -131,7 +135,9 @@ public class Player : MonoBehaviour
         {
             AudioManager.Instance.PlayOneShot(playerDeathSound, transform.position);
         }
+        
         Destroy(gameObject);
+        SceneManager.LoadScene(returnSceneName);
     }
 
     private IEnumerator InvincibilityFrames()

@@ -19,11 +19,11 @@ public class Enemy : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Player player = collision.collider.GetComponent<Player>();
+            Player player = other.GetComponent<Player>();
             if (player != null)
             {
                 player.TakeDamage(damage);

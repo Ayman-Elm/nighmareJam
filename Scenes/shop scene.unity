@@ -951,8 +951,8 @@ MonoBehaviour:
       Data4: -1014008542
     Path: event:/ShopMusic
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -2356,6 +2356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnSceneName: BedRoom
+  fmodEmitterObject: {fileID: 0}
 --- !u!1 &1923678027
 GameObject:
   m_ObjectHideFlags: 0
