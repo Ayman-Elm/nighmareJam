@@ -45,31 +45,44 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 
-    IEnumerator FlashAndLoad()
+IEnumerator FlashAndLoad()
+{
+    Time.timeScale = 0f;
+
+    float elapsed = 0f;
+    float originalIntensity = flashlightToFlash.intensity;
+    float originalRadius = flashlightToFlash.pointLightOuterRadius;
+    float originalAngle = flashlightToFlash.pointLightOuterAngle;
+
+    float targetIntensity = targetFlashIntensity;
+    float targetRadius = 100f; // 💡 really big to cover screen
+    float targetAngle = 360f;  // 🔄 full circle flood
+
+    while (elapsed < flashDuration)
     {
-        // 🛑 PAUSE: Disable player & enemy movement if needed
-        Time.timeScale = 0f;
+        elapsed += Time.unscaledDeltaTime;
+        float t = elapsed / flashDuration;
 
-        float elapsed = 0f;
-        float originalIntensity = flashlightToFlash.intensity;
+        flashlightToFlash.intensity = Mathf.Lerp(originalIntensity, targetIntensity, t);
+        flashlightToFlash.pointLightOuterRadius = Mathf.Lerp(originalRadius, targetRadius, t);
+        flashlightToFlash.pointLightOuterAngle = Mathf.Lerp(originalAngle, targetAngle, t);
+        flashlightToFlash.pointLightInnerRadius = flashlightToFlash.pointLightOuterRadius * 0.5f;
+        flashlightToFlash.pointLightInnerAngle = flashlightToFlash.pointLightOuterAngle * 0.5f;
 
-        // Slowly brighten the flashlight over flashDuration (in real time)
-        while (elapsed < flashDuration)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            float t = elapsed / flashDuration;
-            flashlightToFlash.intensity = Mathf.Lerp(originalIntensity, targetFlashIntensity, t);
-            yield return null;
-        }
-
-        // Just in case it didn’t reach max exactly
-        flashlightToFlash.intensity = targetFlashIntensity;
-
-        // ⚠️ Unpause before loading
-        Time.timeScale = 1f;
-
-        SceneManager.LoadScene(sceneToLoad);
+        yield return null;
     }
+
+    // Snap to final values just in case
+    flashlightToFlash.intensity = targetIntensity;
+    flashlightToFlash.pointLightOuterRadius = targetRadius;
+    flashlightToFlash.pointLightOuterAngle = targetAngle;
+    flashlightToFlash.pointLightInnerRadius = targetRadius * 0.5f;
+    flashlightToFlash.pointLightInnerAngle = targetAngle * 0.5f;
+
+    Time.timeScale = 1f;
+    SceneManager.LoadScene(sceneToLoad);
+}
+
 
     void UpdateTimerUI()
     {
