@@ -10,10 +10,10 @@ public class EnemyAI : MonoBehaviour
     [Header("Chase & Orbit Settings")]
     public float chaseSpeed = 3f;         // Speed when approaching player
     public float circleSpeed = 2f;        // Speed when orbiting around player
-    public float dashSpeed = 8f;         // Speed during dash
-    public float chaseDistance = 10f;    // Stop chasing if farther than this
-    public float orbitDistance = 2.5f;   // Begin orbiting if closer than this
-    public float orbitExitBuffer = 1.2f; // If orbiting and distance > orbitDistance+buffer, exit orbit
+    public float dashSpeed = 8f;          // Speed during dash
+    public float chaseDistance = 10f;     // Stop chasing if farther than this
+    public float orbitDistance = 2.5f;    // Begin orbiting if closer than this
+    public float orbitExitBuffer = 1.2f;  // If orbiting and distance > orbitDistance+buffer, exit orbit
 
     [Header("Attack Settings")]
     public float attackInterval = 2f;
@@ -44,15 +44,14 @@ public class EnemyAI : MonoBehaviour
     private Coroutine orbitRoutine;
     private float stuckTimer = 0f;
 
-
     public float originalChaseSpeed;
     public float originalCircleSpeed;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        originalChaseSpeed = chaseSpeed;       // Speed when approaching player
-        originalCircleSpeed = circleSpeed;        // Speed when orbiting around player
+        originalChaseSpeed = chaseSpeed;    // Speed when approaching player
+        originalCircleSpeed = circleSpeed;  // Speed when orbiting around player
     }
 
     void FixedUpdate()
@@ -62,9 +61,11 @@ public class EnemyAI : MonoBehaviour
         Vector2 toPlayer = player.position - transform.position;
         float distance = toPlayer.magnitude;
 
-        // Face the player
-        float angle = Mathf.Atan2(toPlayer.y, toPlayer.x) * Mathf.Rad2Deg - 90f;
+        // ======= FACE THE PLAYER WITH LEFT EDGE =======
+        Vector2 leftDir = new Vector2(toPlayer.y, -toPlayer.x);
+        float angle = Mathf.Atan2(leftDir.y, leftDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
+        // ==============================================
 
         // Decide: stop, chase, or start orbit
         if (distance > chaseDistance)
@@ -105,10 +106,12 @@ public class EnemyAI : MonoBehaviour
                 yield break;
             }
 
-            // Face player
+            // ======= FACE THE PLAYER WITH LEFT EDGE =======
             Vector2 dirToPlayer = toPlayer.normalized;
-            float angle = Mathf.Atan2(dirToPlayer.y, dirToPlayer.x) * Mathf.Rad2Deg - 90f;
+            Vector2 leftDir = new Vector2(dirToPlayer.y, -dirToPlayer.x);
+            float angle = Mathf.Atan2(leftDir.y, leftDir.x) * Mathf.Rad2Deg - 90f;
             rb.rotation = angle;
+            // ==============================================
 
             // Orbit: perpendicular to player direction
             Vector2 orbitDir = new Vector2(-dirToPlayer.y, dirToPlayer.x);
@@ -162,8 +165,11 @@ public class EnemyAI : MonoBehaviour
         Vector2 orbitDirection = new Vector2(-toPlayerNow.y, toPlayerNow.x);
         SetVelocityWithSeparation(orbitDirection * circleSpeed);
 
-        float angle = Mathf.Atan2(toPlayerNow.y, toPlayerNow.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
+        // ======= FACE THE PLAYER WITH LEFT EDGE =======
+        Vector2 leftDir = new Vector2(toPlayerNow.y, -toPlayerNow.x);
+        float finalAngle = Mathf.Atan2(leftDir.y, leftDir.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = finalAngle;
+        // ==============================================
     }
 
     void StopOrbiting()
@@ -227,23 +233,21 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            stuckTimer = 0f; // reset if we’re moving
+            stuckTimer = 0f; // reset if we're moving
         }
     }
 
-    public void ApplySlow(){
-        
+    public void ApplySlow()
+    {
         chaseSpeed = 1f;        // Speed when approaching player
-        circleSpeed = 1f;        // Speed when orbiting around player
+        circleSpeed = 1f;       // Speed when orbiting around player
         dashSpeed = 1f;
-
-
-
     }
-    public void resetStats(){
 
+    public void resetStats()
+    {
         chaseSpeed = originalChaseSpeed;        // Speed when approaching player
-        circleSpeed = originalCircleSpeed;        // Speed when orbiting around player
+        circleSpeed = originalCircleSpeed;      // Speed when orbiting around player
     }
 
     // ----------------------------------------------------
@@ -273,8 +277,8 @@ public class EnemyAI : MonoBehaviour
 
         if (count > 0)
         {
-            repulsion /= count; // average
-            repulsion *= separationForce; // scale by force
+            repulsion /= count;            // average
+            repulsion *= separationForce;  // scale by force
         }
 
         return repulsion;
