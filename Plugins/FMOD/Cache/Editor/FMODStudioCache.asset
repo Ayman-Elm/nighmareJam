@@ -66,10 +66,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794823557865330
+  lastModified: 638795259077480155
   FileSizes:
   - Name: Desktop
-    Value: 1102
+    Value: 1194
   Exists: 1
 --- !u!114 &-6663249805098545835
 MonoBehaviour:
@@ -86,11 +86,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794870404312573
-  lastModified: 638794869308411034
+  lastModified: 638795259077470527
   FileSizes:
   - Name: Desktop
-    Value: 1253728
+    Value: 980320
   Exists: 1
 --- !u!114 &-4768006668500518344
 MonoBehaviour:
@@ -112,7 +111,7 @@ MonoBehaviour:
     Data4: -187630411
   Banks:
   - {fileID: -6663249805098545835}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -146,6 +145,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 593
+--- !u!114 &-299705353800873741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerDeath
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerDeath
+  Guid:
+    Data1: -1861062780
+    Data2: 1184283842
+    Data3: -2136644713
+    Data4: -668327434
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,14 +195,15 @@ MonoBehaviour:
   - {fileID: 1267655042682399446}
   - {fileID: -358739437063006154}
   - {fileID: -8857829888524886583}
+  - {fileID: -299705353800873741}
+  - {fileID: 7562391654608058416}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6663249805098545835}
   StringsBanks:
   - {fileID: -8262154983233447341}
   cacheVersion: 131847
-  cacheTime: 638794870404332858
-  cacheTime: 638794869308411034
+  cacheTime: 638795259077480155
   SerializableEventsDict:
   - key: event:/FlashLightOff
     index: 0
@@ -192,6 +219,10 @@ MonoBehaviour:
     index: 5
   - key: event:/NightmareMusic
     index: 6
+  - key: event:/PlayerDeath
+    index: 7
+  - key: event:/PlayerDamaged
+    index: 8
 --- !u!114 &271212029490552908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +277,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 73391
+  Length: 15000
 --- !u!114 &4568012645239556667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +305,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &7562391654608058416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerDamaged
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerDamaged
+  Guid:
+    Data1: 2117631172
+    Data2: 1094163252
+    Data3: -1217019760
+    Data4: 1168413149
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3516
 --- !u!114 &8071793067053255001
 MonoBehaviour:
   m_ObjectHideFlags: 0

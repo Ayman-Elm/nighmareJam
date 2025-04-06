@@ -1991,8 +1991,9 @@ GameObject:
   - component: {fileID: 1912242394}
   - component: {fileID: 1912242393}
   - component: {fileID: 1912242392}
+  - component: {fileID: 1912242395}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2061,7 +2062,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1912242393}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1912242395}
+        m_TargetAssemblyTypeName: BackButton, Assembly-CSharp
+        m_MethodName: GoBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1912242393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2100,6 +2113,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912242390}
   m_CullTransparentMesh: 1
+--- !u!114 &1912242395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912242390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2612be22ec4e4e945b059cd224ec439c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  returnSceneName: NewTestaaa
 --- !u!1 &1923678027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2392,8 @@ MonoBehaviour:
   energyAmplifier: 1
   attackSpeedAmplifier: 1
   damageAmplifier: 1
+  lightRange: 1
+  lightWidth: 1
   level: 1
   courency: 100
   isNightmare: 0
