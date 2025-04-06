@@ -3828,6 +3828,46 @@ PrefabInstance:
       propertyPath: health
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDeathSound.Path
+      value: event:/PlayerDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDamagedSound.Path
+      value: event:/PlayerDamaged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDeathSound.Guid.Data1
+      value: -1861062780
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDeathSound.Guid.Data2
+      value: 1184283842
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDeathSound.Guid.Data3
+      value: -2136644713
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDeathSound.Guid.Data4
+      value: -668327434
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDamagedSound.Guid.Data1
+      value: 2117631172
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDamagedSound.Guid.Data2
+      value: 1094163252
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDamagedSound.Guid.Data3
+      value: -1217019760
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248669840791666836, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: playerDamagedSound.Guid.Data4
+      value: 1168413149
+      objectReference: {fileID: 0}
     - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
       propertyPath: innerAngle
       value: 0
