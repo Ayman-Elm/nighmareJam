@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
         spawnPropability = baseSpawnPropability;
     }
 
+    
+
     void Update()
     {
         // Example if you want to use speed to move the enemy
