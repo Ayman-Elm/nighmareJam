@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e854e92501a4c934d97ceebc169e6fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
   animator: {fileID: 264574674}
 --- !u!61 &264574673
 BoxCollider2D:
@@ -2513,6 +2514,10 @@ PrefabInstance:
       propertyPath: flashlightOffSound.Guid.Data4
       value: -187630411
       objectReference: {fileID: 0}
+    - target: {fileID: 9214774728550457614, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4146786208365501868, guid: 5b17d9fb9df6e5b449871776443e951f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5904798231335871165, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
