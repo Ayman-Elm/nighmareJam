@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;  // For Button
 using TMPro;           // For TMP_Text (if you're using TextMeshPro)
-using FMODUnity;      // For FMOD functionality
+using FMODUnity;       // For FMOD functionality
 using UnityEngine.EventSystems;  // For EventTrigger
 
 public class UpgradePicker : MonoBehaviour
@@ -11,21 +11,21 @@ public class UpgradePicker : MonoBehaviour
     [SerializeField] private EventReference buttonHoverSound;
 
     // List of possible upgrades
-    [SerializeField] 
-    private string[] UpgradeList = 
-    { 
-        "MovementSpeed", 
-        "HealthIncrease", 
-        "AttackSpeed", 
-        "EnergyIncrease", 
-        "AttackDamage", 
-        "LightRange", 
-        "LightWidth" 
+    [SerializeField]
+    private string[] UpgradeList =
+    {
+        "MovementSpeed",
+        "HealthIncrease",
+        "AttackSpeed",
+        "EnergyIncrease",
+        "AttackDamage",
+        "LightRange",
+        "LightWidth"
     };
 
     // Matching costs for each upgrade (by index)
-    [SerializeField] 
-    private int[] UpgradeCosts = 
+    [SerializeField]
+    private int[] UpgradeCosts =
     {
         50,  // MovementSpeed
         100, // HealthIncrease
@@ -36,27 +36,33 @@ public class UpgradePicker : MonoBehaviour
         150  // LightWidth
     };
 
+    [Header("Manual Upgrade Choice")]
+    [Tooltip("Pick which upgrade index you want to offer in this button.")]
+    [SerializeField] private int chosenUpgradeIndex = 0;
+
     // UI references
     public Button btn;        // Assign in Inspector
     public TMP_Text btnText;  // If using TextMeshPro for the button label
 
-    private int chosenUpgradeIndex;
-
     private void Start()
     {
         // If you haven't assigned a separate TMP_Text in the inspector,
-        // you can also get it from the button's children:
+        // you could get it from the button's children:
         // btnText = btn.GetComponentInChildren<TMP_Text>();
 
-        // Choose an upgrade at Start (randomly)
-        chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
+        // Make sure chosenUpgradeIndex is valid
+        if (chosenUpgradeIndex < 0 || chosenUpgradeIndex >= UpgradeList.Length)
+        {
+            Debug.LogWarning("chosenUpgradeIndex is out of range! Defaulting to 0.");
+            chosenUpgradeIndex = 0;
+        }
 
-        // Update button text to show which upgrade we got and how much it costs
-        // UpdateButtonLabel();
+        // Update button text to show which upgrade and cost
+        UpdateButtonLabel();
 
-        // Listen for clicks and hover events
+        // Listen for clicks
         btn.onClick.AddListener(OnButtonClick);
-        
+
         // Add hover events
         EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
         if (trigger == null)
@@ -86,7 +92,10 @@ public class UpgradePicker : MonoBehaviour
             AudioManager.Instance.PlayOneShot(buttonClickSound);
         }
 
+        // Determine the cost of the chosen upgrade
         int cost = UpgradeCosts[chosenUpgradeIndex];
+
+        // Check currency
         if (GameManager.Instance.courency >= cost)
         {
             GameManager.Instance.courency -= cost;
@@ -100,66 +109,72 @@ public class UpgradePicker : MonoBehaviour
                 player.ApplyAmplifiers();
             }
 
-            Debug.Log($"Bought {UpgradeList[chosenUpgradeIndex]} for {cost}. " +
-                      $"Remaining currency: {GameManager.Instance.courency}" + 
-                      $" | SpeedAmp: {GameManager.Instance.speedAmplifier}");
+            Debug.Log(
+                $"Bought {UpgradeList[chosenUpgradeIndex]} for {cost}. " +
+                $"Remaining currency: {GameManager.Instance.courency} | " +
+                $"SpeedAmp: {GameManager.Instance.speedAmplifier}"
+            );
 
-            chosenUpgradeIndex = UnityEngine.Random.Range(0, UpgradeList.Length);
+            // If you want the same button to remain the same upgrade,
+            // do nothing else here.
+            // If you'd like to switch to a new upgrade automatically,
+            // you could re-assign chosenUpgradeIndex or do something else.
+
+            // chosenUpgradeIndex = 0; // or any other logic
             // UpdateButtonLabel();
+        }
+        else
+        {
+            Debug.Log("Not enough currency to buy this upgrade.");
         }
     }
 
-    // private void UpdateButtonLabel()
-    // {
-    //     // e.g. "MovementSpeed - $50"
-    //     string upgradeName = UpgradeList[chosenUpgradeIndex];
-    //     int cost = UpgradeCosts[chosenUpgradeIndex];
+    private void UpdateButtonLabel()
+    {
+        // e.g. "MovementSpeed - $50"
+        string upgradeName = UpgradeList[chosenUpgradeIndex];
+        int cost = UpgradeCosts[chosenUpgradeIndex];
 
-    //     // If not using TextMeshPro, do the same with legacy Text
-    //     if (btnText != null)
-    //     {
-    //         btnText.text = $"{upgradeName} - ${cost}";
-    //     }
-    // }
+        // If not using TextMeshPro, do the same with legacy Text
+        // if (btnText != null)
+        // {
+        //     btnText.text = $"{upgradeName} - ${cost}";
+        // }
+    }
 
     private void ApplyUpgrade(string upgradeName)
     {
         switch (upgradeName)
         {
             case "MovementSpeed":
-                // Increase the speedAmplifier
                 GameManager.Instance.speedAmplifier += 0.1f;
                 break;
 
             case "HealthIncrease":
-                // Increase the healthAmplifier
                 GameManager.Instance.healthAmplifier += 0.1f;
                 break;
 
             case "AttackSpeed":
-                // Increase attack speed amplifier
                 GameManager.Instance.attackSpeedAmplifier += 0.1f;
                 break;
 
             case "EnergyIncrease":
-                // Increase the energy amplifier
                 GameManager.Instance.energyAmplifier += 0.1f;
                 break;
 
             case "AttackDamage":
-                // Increase damage amplifier
                 GameManager.Instance.damageAmplifier += 0.1f;
                 break;
 
             case "LightRange":
-                // If you have a custom variable or method for this, call it
-                // Example: GameManager.Instance.lightRange += 1.0f;
                 Debug.Log("LightRange upgrade applied!");
+                // If you have a variable for it, do:
+                // GameManager.Instance.lightRange += 1.0f;
                 break;
 
             case "LightWidth":
-                // Another placeholder upgrade effect
                 Debug.Log("LightWidth upgrade applied!");
+                // e.g. GameManager.Instance.lightWidth += 1.0f;
                 break;
         }
     }

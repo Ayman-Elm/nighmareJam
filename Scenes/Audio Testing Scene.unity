@@ -1658,7 +1658,7 @@ MonoBehaviour:
   player: {fileID: 1769189904}
   spawnRadius: 20
   minAngleFromView: 30
-  spawnInterval: 10
+  spawnInterval: 5
 --- !u!4 &1198653269
 Transform:
   m_ObjectHideFlags: 0
@@ -1907,6 +1907,8 @@ MonoBehaviour:
   energyAmplifier: 1
   attackSpeedAmplifier: 1
   damageAmplifier: 1
+  lightRange: 1
+  lightWidth: 1
   level: 1
   courency: 0
   isNightmare: 0
