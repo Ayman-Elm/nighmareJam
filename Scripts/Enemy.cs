@@ -37,12 +37,11 @@ public class Enemy : MonoBehaviour
         // Example if you want to use speed to move the enemy
         // transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Player player = collision.collider.GetComponent<Player>();
+            Player player = other.GetComponent<Player>();
             if (player != null)
             {
                 player.TakeDamage(damage);
