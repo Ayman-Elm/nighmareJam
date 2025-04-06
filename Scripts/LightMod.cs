@@ -17,11 +17,11 @@ public class LightMod : MonoBehaviour
     [Range(0, 5)] public float intensity = 1f;
 
     [Header("Spot Settings (for 2D Spot Light)")]
-    [Range(0, 360)] public float innerAngle = 70.588f;
-    [Range(0, 360)] public float outerAngle = 70.588f;
-    [Range(0, 10)] public float innerRadius = 1f;
-    [Range(0, 10)] public float outerRadius = 5.59f;
-    [Range(0, 1)] public float falloffStrength = 0.109f;
+    [Range(0, 360)] public float innerAngle = 360f;
+    [Range(0, 360)] public float outerAngle = 60.0f;
+    [Range(0, 10)] public float innerRadius = 3f;
+    [Range(0, 1000)] public float outerRadius = 4.0f;
+    [Range(0, 1)] public float falloffStrength = 0.300f;
 
     [Header("Light Toggle")]
     public bool onlyOnLeftMouse = false;

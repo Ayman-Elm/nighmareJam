@@ -2199,12 +2199,52 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: innerAngle
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: outerAngle
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: innerRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: outerRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: falloffStrength
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: enemyDeathSound.Path
+      value: event:/EnemyDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
       propertyPath: flashlightOnSound.Path
       value: event:/FlashLightOn
       objectReference: {fileID: 0}
     - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
       propertyPath: flashlightOffSound.Path
       value: event:/FlashLightOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: enemyDeathSound.Guid.Data1
+      value: -1144868541
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: enemyDeathSound.Guid.Data2
+      value: 1246562018
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: enemyDeathSound.Guid.Data3
+      value: -1422039413
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
+      propertyPath: enemyDeathSound.Guid.Data4
+      value: -949272662
       objectReference: {fileID: 0}
     - target: {fileID: 6297886241416892975, guid: 9e90ef5c23106044a8f28cd7bd2bca6c, type: 3}
       propertyPath: flashlightOnSound.Guid.Data1
