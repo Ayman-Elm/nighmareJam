@@ -3401,10 +3401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5f0c6bcaddd404c835ad37e4f84ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 100
-  sceneToLoad: Scene
+  startTime: 5
+  sceneToLoad: BedRoom
   timerText: {fileID: 1285791660}
-  flashlightToFlash: {fileID: 0}
+  flashlightToFlash: {fileID: 952663463}
   flashDuration: 2
   targetFlashIntensity: 5
 --- !u!114 &1285791660
