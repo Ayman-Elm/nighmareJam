@@ -1,13 +1,13 @@
 using UnityEngine;
-using TMPro; // TMP namespace
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 {
     public float startTime = 100f;
-    public string sceneToLoad = "Scene"; // Set this in Inspector
+    public string sceneToLoad = "Scene";
 
-    public TMP_Text timerText; // TMP instead of UnityEngine.UI.Text
+    public TMP_Text timerText;
 
     private float currentTime;
 
@@ -27,6 +27,14 @@ public class CountdownTimer : MonoBehaviour
             if (currentTime <= 0f)
             {
                 currentTime = 0f;
+
+                // Increase level before changing scene
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.level++;
+                    Debug.Log("Level increased! Now at level: " + GameManager.Instance.level);
+                }
+
                 SceneManager.LoadScene(sceneToLoad);
             }
         }
