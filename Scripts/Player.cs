@@ -136,6 +136,18 @@ public class Player : MonoBehaviour
             AudioManager.Instance.PlayOneShot(playerDeathSound, transform.position);
         }
         
+        // Stop all instances of the MainMusic event
+        RuntimeManager.StudioSystem.getEvent("event:/MainMusic", out var eventDescription);
+        if (eventDescription.isValid())
+        {
+            eventDescription.getInstanceList(out var instances);
+            foreach (var instance in instances)
+            {
+                instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                instance.release();
+            }
+        }
+        
         Destroy(gameObject);
         SceneManager.LoadScene(returnSceneName);
     }
