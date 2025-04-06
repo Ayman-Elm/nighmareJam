@@ -159,32 +159,35 @@ public class LightMod : MonoBehaviour
 
                 if (Time.time >= _nextAttackTime[other])
                 {
-                    // Apply damage
-                    enemy.heatlth -= damage;
+                    // Apply damage correctly
+                    enemy.TakeDamage(damage);
 
-                    // Slow the enemy for 2 seconds at half speed
+                    // Slow effect
                     EnemyAI enemyAI = other.GetComponent<EnemyAI>();
                     if (enemyAI != null)
                     {
                         enemyAI.ApplySlow();
-                    } 
+                    }
 
-                    // If the enemy dies...
-                    if (enemy.heatlth <= 0)
+                    // Death check
+                    if (enemy.GetHealth() <= 0)
                     {
                         if (GameManager.Instance != null)
                         {
-                            GameManager.Instance.courency += enemy.CoinDrop;
+                            GameManager.Instance.courency += enemy.GetCoinDrop();
                         }
+
                         if (!enemyDeathSound.IsNull)
                         {
                             AudioManager.Instance.PlayOneShot(enemyDeathSound, enemy.transform.position);
                         }
+
                         Destroy(enemy.gameObject);
                     }
 
                     _nextAttackTime[other] = Time.time + (1f / attackSpeed);
                 }
+
             }
         }
     }

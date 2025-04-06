@@ -39,11 +39,38 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638795388728097441
+  lastModified: 638795408602219519
   FileSizes:
   - Name: Desktop
-    Value: 1270
+    Value: 1324
   Exists: 1
+--- !u!114 &-7855790551375822325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayAgainButton
+  m_EditorClassIdentifier: 
+  Path: event:/PlayAgainButton
+  Guid:
+    Data1: -88655137
+    Data2: 1101752247
+    Data3: 229279904
+    Data4: -400781911
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4057
 --- !u!114 &-7289724323390219533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,10 +113,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638795388728077465
+  lastModified: 638795385552708186
   FileSizes:
   - Name: Desktop
-    Value: 2433728
+    Value: 2467040
   Exists: 1
 --- !u!114 &-4768006668500518344
 MonoBehaviour:
@@ -199,13 +226,14 @@ MonoBehaviour:
   - {fileID: -2889607839931028863}
   - {fileID: -7289724323390219533}
   - {fileID: 1444023851035466130}
+  - {fileID: -7855790551375822325}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6663249805098545835}
   StringsBanks:
   - {fileID: -8262154983233447341}
   cacheVersion: 131847
-  cacheTime: 638795388728097441
+  cacheTime: 638795385552718276
   SerializableEventsDict:
   - key: event:/FlashLightOff
     index: 0
@@ -229,6 +257,8 @@ MonoBehaviour:
     index: 9
   - key: event:/DeathMusic
     index: 10
+  - key: event:/PlayAgainButton
+    index: 11
 --- !u!114 &271212029490552908
 MonoBehaviour:
   m_ObjectHideFlags: 0
