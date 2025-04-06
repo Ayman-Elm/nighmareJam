@@ -787,9 +787,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d944b8e952c854c4e92fecf4b8c0b169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  returnSceneName: GameScene
   speed: 5
   health: 5
   energy: 100
+  playerDamagedSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  playerDeathSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   energyDrainRate: 10
   energyRechargeRate: 15
   rechargeDelay: 3
@@ -970,8 +985,7 @@ Transform:
   m_LocalPosition: {x: -1.58, y: -1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1699418027}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &264574677
@@ -986,7 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1239da7272fbce7429711ab69a23a32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashlightPivot: {fileID: 484846234}
+  flashlightPivot: {fileID: 0}
   playerSpriteRenderer: {fileID: 264574675}
   upSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   downSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
@@ -2631,6 +2645,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1411178502}
+  - {fileID: 1628403793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1062659687
@@ -3570,6 +3585,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508538446}
   m_CullTransparentMesh: 1
+--- !u!1 &1628403792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628403793}
+  - component: {fileID: 1628403794}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1628403793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628403792}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1030036741}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1628403794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628403792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1722767615
+      Data2: 1211359067
+      Data3: 753608583
+      Data4: 273167451
+    Path: event:/MainMusic
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1639568860
 GameObject:
   m_ObjectHideFlags: 0
@@ -4648,3 +4726,4 @@ SceneRoots:
   - {fileID: 915710827}
   - {fileID: 1151271160}
   - {fileID: 173630960}
+  - {fileID: 264574676}
