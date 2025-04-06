@@ -1,32 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8857829888524886583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/NightmareMusic
-  m_EditorClassIdentifier: 
-  Path: event:/NightmareMusic
-  Guid:
-    Data1: -420260514
-    Data2: 1160686298
-    Data3: -295302723
-    Data4: 1679252418
-  Banks:
-  - {fileID: -6663249805098545835}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 40071
 --- !u!114 &-8596237717241917230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,11 +39,38 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794922593198714
+  lastModified: 638795385552718276
   FileSizes:
   - Name: Desktop
-    Value: 1234
+    Value: 1270
   Exists: 1
+--- !u!114 &-7289724323390219533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RoomMusic
+  m_EditorClassIdentifier: 
+  Path: event:/RoomMusic
+  Guid:
+    Data1: -420260514
+    Data2: 1160686298
+    Data3: -295302723
+    Data4: 1679252418
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 56058
 --- !u!114 &-6663249805098545835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,10 +86,10 @@ MonoBehaviour:
   Path: Assets/nighmareJam/Plugins/FMOD/Nightmare Fuel/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794922593170103
+  lastModified: 638795385552708186
   FileSizes:
   - Name: Desktop
-    Value: 1797728
+    Value: 2433728
   Exists: 1
 --- !u!114 &-4768006668500518344
 MonoBehaviour:
@@ -111,7 +111,7 @@ MonoBehaviour:
     Data4: -187630411
   Banks:
   - {fileID: -6663249805098545835}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -194,17 +194,18 @@ MonoBehaviour:
   - {fileID: 8071793067053255001}
   - {fileID: 1267655042682399446}
   - {fileID: -358739437063006154}
-  - {fileID: -8857829888524886583}
   - {fileID: 2361785204692411580}
   - {fileID: 4699920802465559106}
   - {fileID: -2889607839931028863}
+  - {fileID: -7289724323390219533}
+  - {fileID: 1444023851035466130}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6663249805098545835}
   StringsBanks:
   - {fileID: -8262154983233447341}
   cacheVersion: 131847
-  cacheTime: 638794922593198714
+  cacheTime: 638795385552718276
   SerializableEventsDict:
   - key: event:/FlashLightOff
     index: 0
@@ -218,14 +219,16 @@ MonoBehaviour:
     index: 4
   - key: event:/EnemyDeath
     index: 5
-  - key: event:/NightmareMusic
-    index: 6
   - key: event:/PlayerDeath
-    index: 7
+    index: 6
   - key: event:/PlayerDamaged
-    index: 8
+    index: 7
   - key: event:/MainMusic
+    index: 8
+  - key: event:/RoomMusic
     index: 9
+  - key: event:/DeathMusic
+    index: 10
 --- !u!114 &271212029490552908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +283,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 15000
+  Length: 73391
+--- !u!114 &1444023851035466130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DeathMusic
+  m_EditorClassIdentifier: 
+  Path: event:/DeathMusic
+  Guid:
+    Data1: -310914720
+    Data2: 1164745061
+    Data3: -1944896604
+    Data4: 1258297451
+  Banks:
+  - {fileID: -6663249805098545835}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3428
 --- !u!114 &2361785204692411580
 MonoBehaviour:
   m_ObjectHideFlags: 0
