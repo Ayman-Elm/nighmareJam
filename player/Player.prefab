@@ -98,6 +98,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014322e43969fe84c91ea582ac63e520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashlightOnSound:
+    Guid:
+      Data1: -1381526365
+      Data2: 1286814355
+      Data3: 1582730368
+      Data4: 1482601976
+    Path: event:/FlashLightOn
+  flashlightOffSound:
+    Guid:
+      Data1: 673511276
+      Data2: 1255494075
+      Data3: 258316222
+      Data4: -187630411
+    Path: event:/FlashLightOff
+  enemyDeathSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   lightColor: {r: 1, g: 1, b: 1, a: 1}
   intensity: 1
   innerAngle: 70.588
@@ -363,6 +384,7 @@ GameObject:
   - component: {fileID: 5825605974991680998}
   - component: {fileID: 4609905046086716028}
   - component: {fileID: 406567675112166642}
+  - component: {fileID: 2144643909206697377}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -379,7 +401,7 @@ Transform:
   m_GameObject: {fileID: 6021015377665910702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.03, y: -2.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -482,8 +504,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  health: 0
-  energy: 0
+  health: 5
+  energy: 100
   energyDrainRate: 10
   energyRechargeRate: 15
   rechargeDelay: 3
@@ -500,6 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e854e92501a4c934d97ceebc169e6fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2144643909206697377}
 --- !u!114 &4609905046086716028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,3 +577,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!95 &2144643909206697377
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021015377665910702}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b85931b0f26b974fa724ac6e86666d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
