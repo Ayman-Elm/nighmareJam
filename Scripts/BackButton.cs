@@ -10,4 +10,17 @@ public class BackButton : MonoBehaviour
     {
         SceneManager.LoadScene(returnSceneName);
     }
+
+        public void QuitGame()
+    {
+        Debug.Log("Quit button pressed!");
+
+        // Works in builds
+        Application.Quit();
+
+        // Optional: Quit play mode in the editor
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
 }
