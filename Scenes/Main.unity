@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 56054047}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.06, y: 5.32, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3207,7 +3207,7 @@ MonoBehaviour:
   player: {fileID: 1769189904}
   spawnRadius: 5
   minAngleFromView: 30
-  spawnInterval: 5
+  spawnInterval: 1
 --- !u!4 &1198653269
 Transform:
   m_ObjectHideFlags: 0
@@ -3396,12 +3396,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1769189904}
     - target: {fileID: -3320615045466972021, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
+      propertyPath: chaseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3320615045466972021, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
+      propertyPath: circleSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3320615045466972021, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
       propertyPath: dashDuration
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -3320615045466972021, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
       propertyPath: chaseDistance
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -3320615045466972021, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
+      propertyPath: orbitDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3320615045466972021, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
+      propertyPath: attackInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3320615045466972021, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
+      propertyPath: orbitExitBuffer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 327943098362198208, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
       propertyPath: m_Name
@@ -3453,11 +3473,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4583009986727006585, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
       propertyPath: baseHealth
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4583009986727006585, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
       propertyPath: baseCoinDrop
-      value: 10
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4722665104867670539, guid: b24c7f9b60cea904196d3d4861e11f9f, type: 3}
       propertyPath: m_IsTrigger
